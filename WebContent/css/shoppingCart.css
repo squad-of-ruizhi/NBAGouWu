@@ -1,0 +1,299 @@
+@charset "utf-8";
+/* CSS Document */
+/*购物车*/
+#body_content p{
+	font-size: 26px;
+	font-weight: 500;
+	margin-left: 60px;
+	/*margin-top: 30px;*/
+	line-height: 100px;
+}
+.bc_i{
+	width: 100%;
+	height: 100px;
+}
+.bc_i ul li{
+	float: left;
+	display: block;
+	margin-left: 25px;
+	font-size: 16px;
+	font-weight: 400;
+	text-decoration: underline;
+}
+.bc_i ul li a{
+	font-size: 16px;
+	font-weight: 400;
+	color: black;
+}
+.bc_i ul li:first-child{
+	margin-left: 1100px;
+}
+
+#bc_t{
+	margin-top: -45px;
+}
+#bct_1{
+	width: 400px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: #949DA9;
+	margin-left: 50px;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+#bct_2{
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: #949DA9;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+#bct_3{
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: #949DA9;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+#bct_4{
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: #949DA9;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+#bct_5{
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: #949DA9;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+#cartbox{
+	width: 100%;
+	height: auto;
+	float: left;
+}
+.cb_1{
+	float: left;
+	height: 150px;
+	width: 30px;
+	margin-left: 50px;
+	line-height: 150px;
+}
+.cb_2{
+	width: 100px;
+	height: 150px;
+	float: left;
+}
+.cb_2 img{
+	margin-top: 25px;
+}
+.cb_3{
+	width: 270px;
+	height: 150px;
+	float: left;
+}
+.cb3_1{
+	margin-top: 25px;
+	margin-left: 10px;
+}
+.cb3_2{
+	font-size: 11px;
+	margin-top: 25px;
+	margin-left: 10px;
+}
+.cb3_3{
+	font-size: 11px;
+	margin-left: 10px;
+}
+.cb3_4{
+	font-size: 11px;
+	margin-left: 10px;
+}
+.cb_4{
+	width: 180px;
+	height: 150px;
+	float: left;
+	line-height: 130px;
+	font-size: 16px;
+	font-weight: 600;
+}
+.cb_5{
+	width: 180px;
+	height: 150px;
+	float: left;
+}
+.cb5_sub{
+	background-color: #B4B4B4;
+	border: none;
+	color: white;
+	font-size: 24px;
+	width: 36px;
+	height: 36px;
+	margin-top: 45px;
+}
+.cb5_add{
+	background-color: #00539C;
+	border: none;
+	color: white;
+	font-size: 24px;
+	width: 36px;
+	height: 36px;
+	margin-top: 45px;
+}
+.cb5_text{
+	width: 34px;
+	height: 34px;
+	margin-top: 40px;
+	border: solid #ccc 1px;
+}
+.cb_6{
+	width: 180px;
+	height: 150px;
+	float: left;
+	line-height: 130px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #00539C;
+}
+.cb_7{
+	width: 180px;
+	height: 150px;
+	float: left;
+	line-height: 130px;
+}
+.cb_7 a{
+	color: black;
+	font-weight: 100;
+}
+.cb_8{
+	width: 990px;
+	height: 2px;
+	border-bottom: solid #ccc 1px;
+	float: left;
+	margin-left: 180px;
+}
+#bc_accounts{
+	width: 100%;
+	height: 188px;
+	float: left;
+}
+#bca{
+	float: right;
+	width: 350px;
+	height: 188px;
+	margin-right: 60px;
+}
+#bca_left{
+	margin-top: 50px;
+	float: left;
+	font-size: 18px;
+	color: #00539C;
+	width: 50%;
+}
+#bca_right{
+	margin-top: 50px;
+	float: right;
+	font-size: 18px;
+	color: #00539C;
+	width: 50%;
+}
+#bca_btn_left{
+	margin-top: 50px;
+	float: left;
+	width: 50%;
+}
+#bca_btn_right{
+	margin-top: 50px;
+	float: right;
+	width: 50%;
+}
+#bca_btn_left input{
+	width: 150px;
+	height: 40px;
+	background-color: #00539C;
+	border: solid 2px #00539C;
+	border-radius: 2px;
+	color: white;
+	font-size: 12px;
+}
+#bca_btn_right input{
+	width: 150px;
+	height: 40px;
+	background-color: white;
+	border: solid 2px #00539C;
+	border-radius: 2px;
+	color: #00539C;
+	font-size: 12px;
+}
+#bca_btn_left input:hover{
+	background-color: #0073D1;
+	border: solid 2px #0073D1;
+}
+#bca_btn_right input:hover{
+	border: solid 2px #0073D1;
+	color: #0073D1;
+}
+
+
+
+
+/*shoppingCart1*/
+#bodycon{
+	width: 100%;
+	height: 500px;
+}
+#bodycon_1{
+	width: 600px;
+	height: 190px;
+	margin-top: 100px;
+}
+#bodycon_1 h4{
+	font-size: 26px;
+	color: #00539C;
+	font-weight: 500;
+}
+#bodycon_1 p{
+	font-size: 14px;
+	color: #848484;
+	font-weight: 300;
+	margin-top: 20px;
+}
+#bodycon_1 p a{
+	font-size: 14px;
+	color: red;
+	font-weight: 300;
+	margin-top: 20px;
+	text-decoration: underline;
+}
+#bodycon_1 input{
+	font-size: 14px;
+	color: #00539C;
+	margin-top: 20px;
+	width: 180px;
+	height: 40px;
+	background-color: white;
+	border: solid 2px #00539C;
+	border-radius: 3px;
+}
+#bodycon_1 input:hover{
+	border: solid 2px #0073D1;
+	color: #0073D1;
+	border-radius: 3px;
+	cursor: pointer;
+}

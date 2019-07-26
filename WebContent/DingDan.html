@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="short icon" href="images/NBAlogo.jpg"  />
+<link rel="stylesheet" href="css/DingDan.css" />
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+
+
+<title>NBA  Store</title>
+</head>
+<body>
+        <header>
+		<div class="ul_01">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">我的账户</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;购物车</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
+			</ul>
+		</div>
+    	<img src="images/logo_cn.png" width="218" height="58"  style="margin-left:94px;" alt=""/>
+		<input type="text" id="search" placeholder="专区体恤现时2折8件" />
+		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
+		<div class="newly-added-shop">
+			<ul>
+				<li><a href="#">定制T恤</a></li>
+				<li><a href="#">定制球衣</a></li>
+			</ul>
+		</div>
+	</header>
+	
+	<!-- 导航 -->
+    <nav>
+        <ul id="padCheck">
+          	<li>
+			  	<a href="#">选择球队</a>
+		  	</li>
+          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
+          	<li>
+				<a href="#">品牌</a>
+			</li>
+          	<li>
+				<a href="#">所有商品</a>
+			</li>
+          	<li>
+				<a href="#">球衣</a>
+			</li>
+          	<li>
+				<a href="#">上衣</a>
+			</li>
+          	<li>
+				<a href="#">下装</a>
+			</li>
+          	<li>
+				<a href="#">女子</a>
+			</li>
+          	<li>
+				<a href="#">儿童/青少年</a>
+			</li>
+          	<li>
+				<a href="#">鞋类</a>
+			</li>
+          	<li>
+				<a href="#">篮球</a>
+			</li>
+          	<li>
+				<a href="#">配件</a>
+			</li>
+      </ul>
+    </nav>
+    
+    <!-- <div id="area_img"><img src="images/img_area.png" width="1420px" height="35px" alt="" style="margin-left:30px;"/></div> -->
+	<div id="left">
+		<p class="list-nav-title" >详情</p>
+		<div class="line"></div>
+		<div id="left_ul">
+			<ul>
+				<li><p class="WDD" onclick="WDD()">我的订单</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p class="WDZ" onclick="WDZ()">地址薄</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+		          <li><p>历史记录</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+			     <li><p>个人信息管理</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+			<!--  <li><p>限量商品</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>鞋子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>女子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>儿童</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>品牌</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>夏装</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li><p>所有商品</p></li> 
+			</ul>
+		</div> 
+	   <p class="list-nav-title" >价格区间</p>
+		<div class="line"></div> 
+		 <div id="div_checkbox">
+			<ul>
+				<li><input type="checkbox" value="¥1-199" /></li>
+				<li><input type="checkbox" /></li>
+				<li><input type="checkbox" /></li>
+				<li><input type="checkbox" /></li>
+			</ul>
+			<div id="checkbox_price">
+				<p>¥1-199</p>
+				<p>¥200-399</p>
+				<p>¥400-599</p>
+				<p>¥600 及以上</p>
+			</div> -->
+		<!-- </div>
+		<div class="line" style="margin-top: 30px"></div>
+		<div id="clear_button" align="center">
+			<input type="button" value="清除筛选" /> -->
+		</div>  
+	</div>
+	
+	<div id="right">
+	        <p style="font-size:24px;margin-left:40px;" >我的订单</p>
+	        <div class="nav">
+	         <a class="active" id="left_table">进行中</a>
+	         <a id="right_table">取消/已完成</a>
+	        </div>
+	      <div class="myaccount_content_" id="myaccount_content_">
+					&nbsp&nbsp&nbsp&nbsp&nbsp你的页面是空的，赶紧去选择喜爱的商品吧！</div>
+	<div class="myaccount_content_box active">
+	   <table class="table-myaccount" id="table-myaccount">
+							<thead>
+								<tr>
+									<th><span>订单编号.</span></th>
+									<th>订单日期</th>
+									<th>数量&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+									<th>订单总计</th>
+									<th>订单状态</th>
+								</tr>
+							</thead>
+							<tbody>
+							<!-- 循环 start-->
+								<tr>
+								  	<td><a href="/myaccount/orderDetailByOrderNo.htm?code=NBACN200685">NBACN200685</a></td>
+								  	<td>25/07/2019 10:09:18</td>
+								  	<td>1</td>
+								  	<td>¥369.00</td>
+								  	<td>
+								  				<span class="font-blue">等待付款</span>
+								  				<a class="btn-red" ok_socode="NBACN200685" ok_paymenttype="4">
+								  						立即支付</a>
+								  			</td>
+								  		</tr>
+								<!-- 循环 end-->
+							</tbody>
+					    </table>
+					    </div>
+	</div>
+	
+	 <div id="right_DZ">
+	         <div class="myaccount_box ">
+						<h2>我的地址簿</h2>
+	 </div>
+	   <div class="my-address-btn">
+		<button class="btnevents-addAddressBtn">添加新的收货地址</button>
+		</div>
+		
+		<div class="default-address">
+		 <p class="edit-name">
+		   杨风雨<span class="AAA">默认地址</span></p>
+			<p style="margin-left:35px;padding-top:7px;">+86 15575522311</p>
+			<p style="margin-left:35px;padding-top:7px;">597550427@qq.com</p>
+			<p class="edit-addressH">
+			浙江省&nbsp;舟山市 &nbsp;定海区 &nbsp;&nbsp;娜娜桦 aa</p>
+			<div class="edit-btn edit-btn-mob">
+			 <button class="btnevents-editAddressBtn" >编辑地址</button>
+			 <button class="btn-delet-btn " >删除</button>
+			</div>
+			<div class="Set-default"  style="display: inline;">
+			<span class="HHH">设为默认</span>
+		</div>
+		</div>
+	 </div>
+	 
+	 <script>
+		function WDD(){
+		    	  $("#myaccount_content_").css("display","none");
+		    	  $("#table-myaccount").css("display","block");
+		    	  $("#right").css("display","block");
+		    	  $("#right_DZ").css("display","none");
+		       }
+		
+		function WDZ(){
+			  $("#myaccount_content_").css("display","none");
+			  $("#right").css("display","none");
+			  $("#right_DZ").css("display","block");
+		 }
+		 
+		 $(".HHH").click( function(){
+			$(this).hide(); 
+			 $(".AAA").css("display","block");
+			}); 
+		</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0 auto;
+	padding: 0;
+	font-size: 14px;
+}
+li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+header{
+	background-color: #0A3665;
+	height: 140px;
+}
+header .ul_01{
+	margin-left: 1020px;
+	width: 100%;
+}
+header .ul_01 li a{
+	display: block;
+	margin-top: 8px;
+	color: white;
+	font-size: 12px;
+	float: left;
+	margin-left: 5px;
+}
+header img{
+	position: absolute;
+	margin-top: 65px;
+	margin-left: 50px;
+}
+#search{
+	margin-top: 50px;
+	margin-left: 385px;
+	width: 650px;
+	height: 25px;
+	border: solid white 10px;
+	border-radius: 5px;
+}
+#search_icon{
+	position: absolute;
+	margin-left: -84px;
+	margin-top: -5px;
+}
+.newly-added-shop{
+	float: left;
+	margin-left: 1100px;
+	margin-top: -36px;
+}
+.newly-added-shop ul li{
+	float: left;
+}
+.newly-added-shop a{
+	color: white;
+	font-size: 18px;
+	text-decoration: underline;
+	display: block;
+	width: 85px;
+	
+}
+nav{
+	background-color: #0669B2;
+	height: 37px;
+}
+nav #padCheck{
+	margin-left: 50px;
+	height: auto;
+	
+}
+nav #padCheck li{
+	margin:0 auto;
+	float: left;
+	margin-left: 40px;
+	line-height: 37px;
+	display: block;
+}
+nav #padCheck li:hover{
+	background-color: #06558E;
+}
+nav #padCheck a{
+	color: white;
+	font-weight: 600;
+	font-size: 13px;
+}
+nav #padCheck a:hover{
+	color: red;
+	font-weight: bolder;
+}
+#area_img{
+	height: 30px;
+}
+#area_img img{
+	cursor: pointer;
+}
+#left{
+	width:245px;
+	height: 940px;
+	background-color: #393F48;
+	margin-left: 70px;
+}
+.list-nav-title{
+	color: white;
+	font-size: 18px;
+	margin-left: 23px;
+	padding-top: 47px;
+}
+.line{
+	width: 195px;
+	height: 1.5px;
+	background: #5E646C;
+	margin-top: 10px;
+}
+#left_ul ul li{
+	margin-top: 30px;
+	margin-left: 23px;
+}
+#left_ul ul li p{
+	color: white;
+}
+#left_ul ul li img{
+	float: right;
+	margin-top: -15px;
+	margin-right: 50px;
+}
+#div_checkbox{
+	width: 400px;
+}
+#div_checkbox li{
+	margin-top: 15px;
+	margin-left: 23px;
+}
+#div_checkbox li input{
+	cursor: pointer;
+}
+#checkbox_price{
+	margin-left: 55px;
+	margin-top: -134px;
+}
+#checkbox_price p{
+	margin-top: 17px;
+	color: white;
+	font-size: 12px;
+}
+#clear_button input{
+	margin-top: 20px;
+	width: 175px;
+	height: 38px;
+	border: white solid 2px;
+	background-color: #393F48;
+	color: white;
+	font-size: 12px;
+	border-radius: 2px;
+}
+#clear_button input:hover{
+	background-color: white;
+	color: #0073D1;
+}
+
+
+#left_ul li:hover{
+	cursor: pointer;
+	transform:scale(1.1);
+}
+
+#right{
+	display:block;
+	  float:right;
+	   width:78%;
+	   height:500px;
+	
+	   margin-top:-925px;
+}
+
+#right_DZ{
+	 display:none;
+	  float:right;
+	   width:78%;
+	   height:500px;
+
+	   margin-top:-925px;
+}
+
+.nav{
+	padding-top:15px;
+	border-bottom:1px solid #00559a;
+	
+}
+
+
+#left_table{
+	width:50px;
+	height:40px;
+	margin-left:25px;
+	border:35px;
+	/* background-color:#00559a; */
+	border-radius:3px 3px 3px 3px;
+	color:#949da9;
+	
+}
+
+#right_table{
+	margin-left:50px;
+	color:#949da9;
+	line-height:28px;
+}
+
+#right a:hover{
+	cursor: pointer;
+	color:red;
+}
+
+.default-address{
+	width:400px;
+	height:270px;
+	background-color:#e4e4e4;
+	margin-left:10px;
+	margin-top:25px;
+}
+
+.myaccount_content_{
+	  display:block;
+}
+
+.table-myaccount {
+	margin-left:1px;
+	border:1px solid #ddd;
+	width:100%;
+	display:none;
+}
+
+.table-myaccount  thead{
+	line-height:40px;
+	 background-color:#949da9;
+}
+
+.table-myaccount   th{
+	text-align:center;
+	color:#fff;
+	font-size:16px;
+	line-height:50px;
+}
+
+
+.table-myaccount  td{
+	padding:22px;
+	line-height:20px;
+	color:#58595b;
+	text-align:center;
+}
+
+.font-blue{
+	font-weight:bold;
+	color:#0a5798;
+	cursor: pointer;
+}
+
+.btn-red{
+	color:#e30543;
+	font-size:14px;
+	text-decoration:underline;
+	margin-left:15px;
+	cursor: pointer;
+}
+
+.myaccount_box h2{
+	margin-left:35px;
+	margin-top:10px;
+	font-size:20px;
+	font-weight:bold;
+	color:#000;
+}
+
+.btnevents-addAddressBtn{
+	margin-left:31px;
+	margin-top:17px;
+	  background-color:#00559a;
+	  border:1px;
+	  color:#fff;
+	  height:40px;
+	  width:160px;
+	  font-size:12px;
+	  border-radius:8px;
+	  cursor: pointer;
+}
+
+.edit-name{
+	font-size:16px;
+	font-weight:bold;
+	min-height:25px;
+	margin-left:38px;
+	padding-top:25px;
+	
+}
+
+.edit-name span{
+	font-size:16px;
+	color:#00559a;
+	margin-left:150px;
+	display:none;
+}
+.edit-addressH{
+	margin-left:30px;
+	margin-top:8px;
+}
+
+
+.btnevents-editAddressBtn{
+	border-radius:3px;
+	background-color:#00559a;
+	color:#fff;
+	font-size:12px;
+	margin-left:42px;
+	margin-top:45px;
+	width:150px;
+	height:38px;
+	
+}
+
+.btn-delet-btn{
+		border:2px solid #00559a;
+		color:#00559a;
+		height:36px;
+		width:150px;
+		margin-left:18px;
+}
+
+
+.Set-default span{
+	text-decoration:underline;
+	margin-left:260px;
+	position:relative;
+	top:15px;
+}
+
+.Set-default span:hover{
+	 cursor: pointer;
+	 color:red;
+}

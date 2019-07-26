@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NBA  Store</title>
+<link rel="stylesheet" href="css/index.css" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="short icon" href="images/NBAlogo.jpg"  />
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#shoppingcar").mouseover(function() {
+		$(".header_menu").show();
+	});
+	$("#shoppingcar").mouseout(function() {
+		$(".header_menu").hide();
+	});
+	$("#header_menu").mouseover(function() {
+		$(".header_menu").show();
+	});
+})
+	
+function change(id){
+	$(this).attr("src","images/open.png");
+	console.info(id);
+	if($("#"+id+" a img").attr("src") == "images/open.png"){
+		$("#"+id+" a img").attr("src", "images/close.png");
+	} else{
+		$("#"+id+" a img").attr("src", "images/open.png");
+	}
+}
+	
+	
+</script>
+	
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header>
+		<div class="ul_01">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">我的账户</a></li>
+				<li><a href="#">|</a></li>
+				<li id="shoppingcar">
+					<a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;购物车</a>
+					<div class="header_menu" align="center" hidden="true">
+                        <div id="hm_i">
+							<i class="fa fa-sort-asc fa-2x fa-inverse"></i>
+						</div>
+						<div class="hm_list">
+                            <div id="hml_title">
+								<b id="hml_1">我的购物车</b>
+                              	<b class="hml_2">1件商品</b>
+							</div>
+							<div id="hml_coms">
+							  	<div class="hml_com">
+									<div class="hmlc">
+								  		<img src="images/com_1.jpg" width="60px" height="60px" alt=""/>
+										<div class="hmlc_com" align="left">
+											<p class="hmlcc_1">
+												NBA 斯伯丁 Spalding 德鲁大叔<br/>
+												PU 室内外7号篮球
+											</p>
+											<p class="hmlcc_2">
+												数量:<b class="com_num">1</b> &nbsp; &nbsp; &nbsp; &nbsp; 
+												图片:<b class="com_color">图片色</b><br/>
+												尺寸:<b class="com_size">F</b>
+											</p>
+											<p class="hmlcc_3">￥399</p>
+										</div>
+									</div>
+								</div>
+								<div class="hml_com">
+									<div class="hmlc">
+								  		<img src="images/com_1.jpg" width="60px" height="60px" alt=""/>
+										<div class="hmlc_com" align="left">
+											<p class="hmlcc_1">
+												NBA 斯伯丁 Spalding 德鲁大叔<br/>
+												PU 室内外7号篮球
+											</p>
+											<p class="hmlcc_2">
+												数量:<b class="com_num">1</b> &nbsp; &nbsp; &nbsp; &nbsp; 
+												图片:<b class="com_color">图片色</b><br/>
+												尺寸:<b class="com_size">F</b>
+											</p>
+											<p class="hmlcc_3">￥399</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="hml_total">
+								<p align="left">总计
+									<b id="totalprice">￥798.00</b>
+								</p>
+								<input type="button" value="查看购物车" />
+							</div>
+					  </div>
+					</div>
+				</li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
+			</ul>
+		</div>
+    	<img src="images/logo_cn.png" width="218" height="58"  style="margin-left:94px;" alt=""/>
+		<input type="text" id="search" placeholder="专区体恤现时2折8件" />
+		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
+		<div class="newly-added-shop">
+			<ul>
+				<li><a href="#">定制T恤</a></li>
+				<li><a href="#">定制球衣</a></li>
+			</ul>
+		</div>
+	</header>
+	
+	<!-- 导航 -->
+    <nav>
+        <ul id="padCheck">
+          	<li>
+			  	<a href="#">选择球队</a>
+		  	</li>
+          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
+          	<li>
+				<a href="#">品牌</a>
+			</li>
+          	<li>
+				<a href="#">所有商品</a>
+			</li>
+          	<li>
+				<a href="#">球衣</a>
+			</li>
+          	<li>
+				<a href="#">上衣</a>
+			</li>
+          	<li>
+				<a href="#">下装</a>
+			</li>
+          	<li>
+				<a href="#">女子</a>
+			</li>
+          	<li>
+				<a href="#">儿童/青少年</a>
+			</li>
+          	<li>
+				<a href="#">鞋类</a>
+			</li>
+          	<li>
+				<a href="#">篮球</a>
+			</li>
+          	<li>
+				<a href="#">配件</a>
+			</li>
+      </ul>
+    </nav>
+	<div id="area_img"><img src="images/img_area.png" width="100%" height="30px" alt=""/></div>
+	<div id="left">
+		<p class="list-nav-title" >分类</p>
+		<div class="line"></div>
+		<div id="left_ul">
+			<ul>
+				<li id="add1" onClick="change(this.id)"><p>所有球衣</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add2" onClick="change(this.id)"><p>上装</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add3" onClick="change(this.id)"><p>配件</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add4" onClick="change(this.id)"><p>篮球</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add5" onClick="change(this.id)"><p>限量商品</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add6" onClick="change(this.id)"><p>鞋子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add7" onClick="change(this.id)"><p>女子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add8" onClick="change(this.id)"><p>儿童</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add9" onClick="change(this.id)"><p>品牌</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li id="add10" onClick="change(this.id)"><p>夏装</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+				<li onClick="change()"><p>所有商品</p></li>
+			</ul>
+		</div>
+	  	<p class="list-nav-title" >价格区间</p>
+		<div class="line"></div>
+		<div id="div_checkbox">
+			<ul>
+				<li><input type="checkbox" value="¥1-199" /></li>
+				<li><input type="checkbox" /></li>
+				<li><input type="checkbox" /></li>
+				<li><input type="checkbox" /></li>
+			</ul>
+			<div id="checkbox_price">
+				<p>¥1-199</p>
+				<p>¥200-399</p>
+				<p>¥400-599</p>
+				<p>¥600 及以上</p>
+			</div>
+		</div>
+		<div class="line" style="margin-top: 30px"></div>
+		<div id="clear_button" align="center">
+			<input type="button" value="清除筛选" />
+		</div>
+		<div style="height: 50px; width: 100%;"></div>
+	</div>
+<div id="right">
+		<div id="right_list">
+			<select id="right_list_left">
+				<option>按新品</option>
+				<option>按热销</option>
+				<option>按价格</option>
+				<option>按价格</option>
+				<option>按价格</option>
+			</select>
+		  <select id="right_list_right">
+				<option>每页10件商品</option>
+				<option>每页20件商品</option>
+				<option>每页30件商品</option>
+				<option>每页40件商品</option>
+				<option>每页50件商品</option>
+			</select>
+		</div>
+		<div id="commodity">
+			<!--  <div class="commo">
+		    	<a href="buy.html"><img src="images/com_1.jpg" width="150" height="150"  alt=""/></a>
+				<h2>NBA 斯伯丁 Spalding<br /> 德鲁大叔 PU 室内外7</h2>
+				<p><span>¥399.00</span></p>
+			</div>  -->
+		</div>
+	</div>
+	<!-- 脚部 -->
+	<div id="foot">
+        <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
+		<div id="foot_div2">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">说出你想要的</a></li>
+				<li><a href="#">门店位置</a></li>
+				<li><a href="#">帮助</a></li>
+			</ul>
+		</div>
+		<div id="foot_div3">
+			<p id="p1">联系我们</p>
+			<div id="p2">
+				<ul>
+					<li>
+						<i class="fa fa-envelope-o fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">service@nbastore.cn</a>
+					</li>
+					<li>
+						<i class="fa fa-phone fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">400-0066-802（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-comments fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">在线客服（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-weibo fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">NBASTORE官方微博</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="footline"></div>
+	  <div id="foot_content">
+			<p id="f_c1">沪ICP备 14013659-2号 
+				<a href="#">使用条款</a>
+				<a>|</a>
+				<a href="#">隐私政策</a>
+				<a>|</a>
+				<a href="#">退换货政策</a>
+			</p>
+		  <p id="f_c2"><a href="#">
+			  <img src="images/icon-b.png" width="20" height="20" alt=""/>
+			  沪公网安备 31010802001463号 公司证件
+			  </a>
+		  </p>
+		  <p id="f_c3">
+			  ©2017 NBA Media Ventures, LLC.保留所有权利。NBAStore.com.cn/NBAStore.cn上的任何部分都不得以任何形式被复制、再传播，或篡改。
+		  </p>
+		  <p id="f_c4">
+		  	  欢迎您使用NBA中国官方旗舰店网站！ NBA中国官方旗舰店网站由NBA体育文化发展(北京)有限责任公司委托上海枫泊电子商务有限公司进行运营和维护。
+		  </p>
+		</div>
+</div>
+</body>
+</html>
