@@ -35,7 +35,8 @@ public class ReadPro  extends  Properties {
     	   
      }
      
-      public static ReadPro  getinstance(){
+      public static ReadPro  getInstance(){
     	  return instance;
       }
+
 }

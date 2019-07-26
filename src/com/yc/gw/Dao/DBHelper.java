@@ -17,31 +17,31 @@ import java.util.Map;
 public class DBHelper {
 	static {
 		try {
-			Class.forName(ReadPro.getinstance().getProperty("className"));
+			Class.forName(ReadPro.getInstance().getProperty("className"));
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * »ñÈ¡Á¬½ÓµÄ·½·¨
+	 * è·å–è¿æ¥çš„æ–¹æ³•
 	 * @return
 	 */
 	private Connection getConnection() {
 		Connection con = null;
 		try {
 //			con = DriverManager.getConnection(ReadPro.getInstance().getProperty("url"),
-//					ReadPro.getInstance().getProperty("user"), 
+//					ReadPro.getInstance().getProperty("user"),
 //					ReadPro.getInstance().getProperty("password"));
-			con = DriverManager.getConnection(ReadPro.getinstance().getProperty("url"), ReadPro.getinstance());
+			con = DriverManager.getConnection(ReadPro.getInstance().getProperty("url"), ReadPro.getInstance());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return con;
 	}
-	
+
 	/**
-	 * ¹Ø±Õ×ÊÔ´µÄ·½·¨ 
+	 * å…³é—­èµ„æºçš„æ–¹æ³•
 	 * @param rs
 	 * @param pstmt
 	 * @param con
@@ -54,7 +54,7 @@ public class DBHelper {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (pstmt != null) {
 			try {
 				pstmt.close();
@@ -62,7 +62,7 @@ public class DBHelper {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (con != null) {
 			try {
 				con.close();
@@ -71,119 +71,119 @@ public class DBHelper {
 			}
 		}
 	}
-	
+
 	/**
-	 * ¸øÔ¤±àÒëÖ´ĞĞÓï¾äÖĞµÄÕ¼Î»·û¸³Öµ
-	 * @param pstmt Òª¸³ÖµµÄÔ¤±àÒë¿é
-	 * @param params ÖµÁĞ±í
+	 * ç»™é¢„ç¼–è¯‘æ‰§è¡Œè¯­å¥ä¸­çš„å ä½ç¬¦èµ‹å€¼
+	 * @param pstmt è¦èµ‹å€¼çš„é¢„ç¼–è¯‘å—
+	 * @param params å€¼åˆ—è¡¨
 	 */
 	private void setValues(PreparedStatement pstmt, Object ... params) {
 		if (pstmt == null || params == null || params.length <= 0) {
 			return;
 		}
-		
+
 		for (int i = 0, len = params.length; i < len; ++ i) {
 			try {
 				pstmt.setObject(i + 1, params[i]);
 			} catch (SQLException e) {
-				System.out.println("µÚ" + (i + 1) + " ¸öÕ¼Î»·û¸³ÖµÊ§°Ü...");
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	private  void  setValues(PreparedStatement pstmt,List<Object>params){
-		if (pstmt == null || params == null || params.size() <= 0) {
-			return;
-		}
-		
-		for (int i = 0, len = params.size(); i < len; ++ i) {
-			try {
-				pstmt.setObject(i + 1, params.get(i));
-			} catch (SQLException e) {
-				System.out.println("µÚ" + (i + 1) + " ¸öÕ¼Î»·û¸³ÖµÊ§°Ü...");
+				System.out.println("ç¬¬" + (i + 1) + " ä¸ªå ä½ç¬¦èµ‹å€¼å¤±è´¥...");
 				e.printStackTrace();
 			}
 		}
 	}
 
-	
+	private  void  setValues(PreparedStatement pstmt,List<Object>params){
+		if (pstmt == null || params == null || params.size() <= 0) {
+			return;
+		}
+
+		for (int i = 0, len = params.size(); i < len; ++ i) {
+			try {
+				pstmt.setObject(i + 1, params.get(i));
+			} catch (SQLException e) {
+				System.out.println("ç¬¬" + (i + 1) + " ä¸ªå ä½ç¬¦èµ‹å€¼å¤±è´¥...");
+				e.printStackTrace();
+			}
+		}
+	}
+
+
 	/**
-	 * Ö´ĞĞ¸üĞÂ²Ù×÷£¬°üÀ¨update, delete,insert
-	 * @param sql ÒªÖ´ĞĞµÄ¸üĞÂ Óï¾ä
-	 * @param objects ÒªÖ´ĞĞµÄ¸üĞÂÓï¾äÕ¼Î»·û £¿ ¶ÔÓ¦µÄÖµ
-	 * @return ·µ»ØÓï¾äÖ´ĞĞºó£¬ËùÓ°ÏìµÄÊı¾İĞĞÊı
+	 * æ‰§è¡Œæ›´æ–°æ“ä½œï¼ŒåŒ…æ‹¬update, delete,insert
+	 * @param sql è¦æ‰§è¡Œçš„æ›´æ–° è¯­å¥
+	 * @param params è¦æ‰§è¡Œçš„æ›´æ–°è¯­å¥å ä½ç¬¦ ï¼Ÿ å¯¹åº”çš„å€¼
+	 * @return è¿”å›è¯­å¥æ‰§è¡Œåï¼Œæ‰€å½±å“çš„æ•°æ®è¡Œæ•°
 	 */
 	public int update(String sql, Object ... params) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = -1;
 		try {
-			con = this.getConnection(); // »ñÈ¡Á¬½Ó
-			pstmt = con.prepareStatement(sql); // Ô¤±àÒëÖ´ĞĞÓï¾ä¿é
-			this.setValues(pstmt, params);  // ¸øÔ¤±àÒëÖ´ĞĞÓï¾ä¿éµÄÕ¼Î»·û¸³Öµ
-			result = pstmt.executeUpdate(); // Ö´ĞĞÓï¾ä»ñÈ¡½á¹û
+			con = this.getConnection(); // è·å–è¿æ¥
+			pstmt = con.prepareStatement(sql); // é¢„ç¼–è¯‘æ‰§è¡Œè¯­å¥å—
+			this.setValues(pstmt, params);  // ç»™é¢„ç¼–è¯‘æ‰§è¡Œè¯­å¥å—çš„å ä½ç¬¦èµ‹å€¼
+			result = pstmt.executeUpdate(); // æ‰§è¡Œè¯­å¥è·å–ç»“æœ
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeAll(null, pstmt, con);
 		}
-		
+
 		return result;
 	}
-	
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public List<Map<String, String>> find(String sql, Object ... params) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			con = this.getConnection();
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
 			Map<String, String> map = null;
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			while(rs.next()) {
 				map = new HashMap<String, String>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
 					map.put(col, rs.getString(col));
 				}
-				
-				list.add(map); // Èç¹ûÒ»ĞĞµÄÁĞÊı¾İ¶ÁÈ¡½áÊø£¬½«ÕâÒ»ĞĞÊı¾İ´æµ½list¼¯ºÏÖĞ
+
+				list.add(map); // å¦‚æœä¸€è¡Œçš„åˆ—æ•°æ®è¯»å–ç»“æŸï¼Œå°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°listé›†åˆä¸­
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return list;
 	}
-	
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public Map<String, String> findSingle(String sql, List<Object> params) {
 		Connection con = null;
@@ -196,20 +196,20 @@ public class DBHelper {
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			if(rs.next()) {
 				map = new HashMap<String, String>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
 					map.put(col, rs.getString(col));
 				}
@@ -219,53 +219,53 @@ public class DBHelper {
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return map;
 	}
-	
-	
+
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public List<Map<String, Object>> findObj(String sql, List<Object> params) {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			con = this.getConnection();
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
 			Map<String, Object> map = null;
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			String typeName=null;
 			Object obj=null;
 			Blob  blob=null;
 			byte[] bt=null;
 			while(rs.next()) {
 				map = new HashMap<String, Object>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
-				
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
+
 				for (String col : columnNames) {
-					  obj=rs.getObject(col) ;
+					obj=rs.getObject(col) ;
 					if(obj!=null&&!"".equals(obj)){
 						typeName=obj.getClass().getSimpleName();
-						
+
 						if("BLOB".equals(typeName)){
 							blob=rs.getBlob(col);
 							bt=blob.getBytes(1, (int)blob.length());
@@ -274,27 +274,27 @@ public class DBHelper {
 							map.put(col, obj);
 						}
 					}else{
-							map.put(col, obj);
-						}
+						map.put(col, obj);
 					}
-				
-		list.add(map); // Èç¹ûÒ»ĞĞµÄÁĞÊı¾İ¶ÁÈ¡½áÊø£¬½«ÕâÒ»ĞĞÊı¾İ´æµ½list¼¯ºÏÖĞ
+				}
+
+				list.add(map); // å¦‚æœä¸€è¡Œçš„åˆ—æ•°æ®è¯»å–ç»“æŸï¼Œå°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°listé›†åˆä¸­
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return list;
 	}
-	
-	
+
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public Map<String, Object> findSingleObj(String sql, List<Object> params) {
 		Connection con = null;
@@ -307,41 +307,41 @@ public class DBHelper {
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
-			
+
+
 			String typeName=null;
 			Object obj=null;
 			Blob  blob=null;
 			byte[] bt=null;
-			
+
 			if(rs.next()) {
 				map = new HashMap<String, Object>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
-					  obj=rs.getObject(col);
-					  if(obj!=null&&!"".equals(obj)){
-						  typeName=obj.getClass().getSimpleName();
-						  
-						  if("BLOB".equals(typeName)){
-							  blob=rs.getBlob(col);
-							  bt=blob.getBytes(1, (int)blob.length());
-							  map.put(col, bt);
-						  }else{
-							  map.put(col, obj);						  }
-					  }else{
-						  map.put(col, obj);
-					  }
-					  
+					obj=rs.getObject(col);
+					if(obj!=null&&!"".equals(obj)){
+						typeName=obj.getClass().getSimpleName();
+
+						if("BLOB".equals(typeName)){
+							blob=rs.getBlob(col);
+							bt=blob.getBytes(1, (int)blob.length());
+							map.put(col, bt);
+						}else{
+							map.put(col, obj);						  }
+					}else{
+						map.put(col, obj);
+					}
+
 				}
 			}
 		} catch (SQLException e) {
@@ -349,62 +349,62 @@ public class DBHelper {
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return map;
 	}
-	
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public List<Map<String, String>> find(String sql, List<Object>  params) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			con = this.getConnection();
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
 			Map<String, String> map = null;
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			while(rs.next()) {
 				map = new HashMap<String, String>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
 					map.put(col, rs.getString(col));
 				}
-				
-				list.add(map); // Èç¹ûÒ»ĞĞµÄÁĞÊı¾İ¶ÁÈ¡½áÊø£¬½«ÕâÒ»ĞĞÊı¾İ´æµ½list¼¯ºÏÖĞ
+
+				list.add(map); // å¦‚æœä¸€è¡Œçš„åˆ—æ•°æ®è¯»å–ç»“æŸï¼Œå°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°listé›†åˆä¸­
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return list;
 	}
-	
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public Map<String, String> findSingle(String sql, Object ... params) {
 		Connection con = null;
@@ -417,20 +417,20 @@ public class DBHelper {
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			if(rs.next()) {
 				map = new HashMap<String, String>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
 					map.put(col, rs.getString(col));
 				}
@@ -440,23 +440,23 @@ public class DBHelper {
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return map;
 	}
-	
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public List<Map<String, Object>> findObj(String sql, Object ... params) {
 		List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 
 		try {
 			con = this.getConnection();
@@ -464,41 +464,41 @@ public class DBHelper {
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
 			Map<String,Object> map=null;
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
-			
+
+
 			String typeName=null;
 			Object obj=null;
 			Blob  blob=null;
 			byte[] bt=null;
-			
+
 			if(rs.next()) {
 				map = new HashMap<String, Object>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
-					  obj=rs.getObject(col);
-					  if(obj!=null&&!"".equals(obj)){
-						  typeName=obj.getClass().getSimpleName();
-						  
-						  if("BLOB".equals(typeName)){
-							  blob=rs.getBlob(col);
-							  bt=blob.getBytes(1, (int)blob.length());
-							  map.put(col, bt);
-						  }else{
-							  map.put(col, obj);						  }
-					  }else{
-						  map.put(col, obj);
-					  }
-					  
+					obj=rs.getObject(col);
+					if(obj!=null&&!"".equals(obj)){
+						typeName=obj.getClass().getSimpleName();
+
+						if("BLOB".equals(typeName)){
+							blob=rs.getBlob(col);
+							bt=blob.getBytes(1, (int)blob.length());
+							map.put(col, bt);
+						}else{
+							map.put(col, obj);						  }
+					}else{
+						map.put(col, obj);
+					}
+
 				}
 				list.add(map);
 			}
@@ -507,16 +507,16 @@ public class DBHelper {
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return list;
 	}
-	
-	
+
+
 	/**
-	 * ²éÑ¯Êı¾İ
-	 * @param sql ÒªÖ´ĞĞµÄ²éÑ¯Óï¾ä
-	 * @param params ÒªÖ´ĞĞ²éÑ¯Óï¾äÖĞÕ¼Î»·ûµÄÖµ
-	 * @return Ã¿Ò»ĞĞÊı¾İ´æµ½Ò»¸ömapÖÓ£¬ÒÔÁĞÃûÎª¼ü£¬¶ÔÓ¦ÁĞµÄÖµÎªÖµ¡£½«ËùÓĞ¼ÇÂ¼´æµ½list¼¯ºÏÖĞ¡£
+	 * æŸ¥è¯¢æ•°æ®
+	 * @param sql è¦æ‰§è¡Œçš„æŸ¥è¯¢è¯­å¥
+	 * @param params è¦æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ä¸­å ä½ç¬¦çš„å€¼
+	 * @return æ¯ä¸€è¡Œæ•°æ®å­˜åˆ°ä¸€ä¸ªmapé’Ÿï¼Œä»¥åˆ—åä¸ºé”®ï¼Œå¯¹åº”åˆ—çš„å€¼ä¸ºå€¼ã€‚å°†æ‰€æœ‰è®°å½•å­˜åˆ°listé›†åˆä¸­ã€‚
 	 */
 	public Map<String,Object> findSingleObj(String sql, Object ... params) {
 		Connection con = null;
@@ -529,54 +529,54 @@ public class DBHelper {
 			pstmt = con.prepareStatement(sql);
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
-			
-//			String[] cols = {"deptno", "dname", "loc"};  // ??? 
-			
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞµÄÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+
+//			String[] cols = {"deptno", "dname", "loc"};  // ???
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­çš„æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
-			
+
 			String typeName=null;
 			Object obj=null;
 			Blob  blob=null;
 			byte[] bt=null;
-			
+
 			if(rs.next()) {
 				map = new HashMap<String, Object>();
-				// ÁĞµÄÃû³ÆÒÑĞ´ËÀ£¬ÎŞ·¨²éÆäËüµÄ±í £¿ -> ÄÜ²»ÄÜ¶¯Ì¬µÄ»ñÈ¡½á¹û¼¯ÖĞµÄÃ¿¸öÁĞµÄÁĞÃû£¿
-				// Èô¹ûÄÜÈ¡µ½£¬ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÁĞÃû´æ·Åµ½Ò»¸öÊı×éÖĞ£¬È»ºó±éÀúÊı×éÈ¡Öµ¼´¿É
+				// åˆ—çš„åç§°å·²å†™æ­»ï¼Œæ— æ³•æŸ¥å…¶å®ƒçš„è¡¨ ï¼Ÿ -> èƒ½ä¸èƒ½åŠ¨æ€çš„è·å–ç»“æœé›†ä¸­çš„æ¯ä¸ªåˆ—çš„åˆ—åï¼Ÿ
+				// è‹¥æœèƒ½å–åˆ°ï¼Œæˆ‘ä»¬å¯ä»¥å°†è¿™äº›åˆ—åå­˜æ”¾åˆ°ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œç„¶åéå†æ•°ç»„å–å€¼å³å¯
 				for (String col : columnNames) {
 					obj=rs.getObject(col);
-					 if(obj!=null&&!"".equals(obj)){
-						  typeName=obj.getClass().getSimpleName();
-						  
-						  if("BLOB".equals(typeName)){
-							  blob=rs.getBlob(col);
-							  bt=blob.getBytes(1, (int)blob.length());
-							  map.put(col, bt);
-						  }else{
-							  map.put(col, obj);						  }
-					  }else{
-						  map.put(col, obj);
-					  }
-					  
+					if(obj!=null&&!"".equals(obj)){
+						typeName=obj.getClass().getSimpleName();
+
+						if("BLOB".equals(typeName)){
+							blob=rs.getBlob(col);
+							bt=blob.getBytes(1, (int)blob.length());
+							map.put(col, bt);
+						}else{
+							map.put(col, obj);						  }
+					}else{
+						map.put(col, obj);
+					}
+
 				}
-				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return map;
 	}
-	
-	
+
+
 	/**
-	 * ·µ»ØÒ»¸öÕûĞÍÊıµÄ·½·¨
+	 * è¿”å›ä¸€ä¸ªæ•´å‹æ•°çš„æ–¹æ³•
 	 * @param sql
 	 * @param params
 	 * @return
@@ -586,7 +586,7 @@ public class DBHelper {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
-		
+
 		try {
 			con = this.getConnection();
 			pstmt = con.prepareStatement(sql);
@@ -600,93 +600,93 @@ public class DBHelper {
 		} finally {
 			this.closeAll(rs, pstmt, con);
 		}
-		
+
 		return result;
 	}
-/**
- * »ùÓÚ¶ÔÏóµÄ²éÑ¯
- * @param cl Êı¾İ¶ÔÓ¦µÄÀàĞÅÏ¢
- * @param sql
- * @param params
- * @return
- */
-@SuppressWarnings("unchecked")
-public <T> List<T> finds(Class<?> c, String sql, Object ... params) {
-	List<T> list = new ArrayList<T>();
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+	/**
+	 * åŸºäºå¯¹è±¡çš„æŸ¥è¯¢
+	 * @param c æ•°æ®å¯¹åº”çš„ç±»ä¿¡æ¯
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> List<T> finds(Class<?> c, String sql, Object ... params) {
+		List<T> list = new ArrayList<T>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-	T t = null;
-	try {
-		con = this.getConnection();
-		pstmt = con.prepareStatement(sql);
-		this.setValues(pstmt, params);
-		rs = pstmt.executeQuery();
+		T t = null;
+		try {
+			con = this.getConnection();
+			pstmt = con.prepareStatement(sql);
+			this.setValues(pstmt, params);
+			rs = pstmt.executeQuery();
 
-		Method[] methods = c.getDeclaredMethods(); // »ñÈ¡Ö¸¶¨µÄÀàÖĞµÄËùÓĞ·½·¨
-		List<Method> setters = new ArrayList<Method>(); // »ñÈ¡ÀàÖĞµÄËùÓĞsetter·½·¨
-		Map<String, String> typeNames = new HashMap<String, String>();
-		for(Method method : methods) {
-			if (method.getName().startsWith("set")) {
-				setters.add(method);
+			Method[] methods = c.getDeclaredMethods(); // è·å–æŒ‡å®šçš„ç±»ä¸­çš„æ‰€æœ‰æ–¹æ³•
+			List<Method> setters = new ArrayList<Method>(); // è·å–ç±»ä¸­çš„æ‰€æœ‰setteræ–¹æ³•
+			Map<String, String> typeNames = new HashMap<String, String>();
+			for(Method method : methods) {
+				if (method.getName().startsWith("set")) {
+					setters.add(method);
 
-				// »ñÈ¡Õâ¸ösetter·½·¨µÄµÚÒ»¸ö²ÎÊıµÄÀàĞÍ
-				// »ñÈ¡Õâ¸öÀàĞÍ¶ÔÓ¦µÄÀàµÄÀàĞÍ£¬ÎÒÓÃµÄÊÇSimpleName£¬ËµÃ÷²»ĞèÒª»ñÈ¡Õâ¸öÀàµÄ°üÂ·¾¶£¬Ö÷ÒªÀàÃû
-				typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName()); 
-			}
-		}
-
-		ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-		int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞÁĞÊıÁ¿
-		String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
-		for (int i = 0; i < columnCount; ++ i) {
-			columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
-		}
-
-		String mname = null;
-		String tname = null;
-		while(rs.next()) { // Ã¿Ñ­»·Ò»´Î¾ÍÊÇÒ»ĞĞÊı¾İ£¬ÄÇÃ´Òª½«ÕâÒ»ĞĞÊı¾İ´æµ½mapÖĞ
-			// ¸ù¾İÀàÏÈÊµÀı»¯Ò»¸ö¶ÔÏóÄÇ¸ö
-			t = (T) c.newInstance(); // t = new UserInfo();
-
-			// Ñ­»·ÕâÒ»ĞĞÊı¾İÖĞµÄËùÓĞÁĞ£¬È¡³öÃ¿Ò»ÁĞµÄÊı¾İ
-			for (String colName : columnNames) { // usid  uname pwd
-				mname = "set" + colName; // setuisd setuname setpwd
-				// Ñ­»·ËùÓĞµÄ·½·¨£¬ÕÒµ½ÕâÒ»ÁĞ¶ÔÓ¦µÄ×¢ÈëÊÇsetter·½·¨
-				for (Method md : setters) {
-					if (mname.equalsIgnoreCase(md.getName())) { // setUsid setUname setPwd
-						tname = typeNames.get(md.getName());
-						if ("int".equals(tname) || "Integer".equals(tname)) {
-							md.invoke(t, rs.getInt(colName)); // t.setUsid(1001) t.setUname("yc")
-						} else if ("float".equals(tname) || "Float".equals(tname)) {
-							md.invoke(t, rs.getFloat(colName)); 
-						} else if ("double".equals(tname) || "Double".equals(tname)) {
-							md.invoke(t, rs.getDouble(colName)); 
-						} else {
-							md.invoke(t, rs.getString(colName)); // t.setUsid(1001) t.setUname("yc")
-						}
-						break;
-					}
+					// è·å–è¿™ä¸ªsetteræ–¹æ³•çš„ç¬¬ä¸€ä¸ªå‚æ•°çš„ç±»å‹
+					// è·å–è¿™ä¸ªç±»å‹å¯¹åº”çš„ç±»çš„ç±»å‹ï¼Œæˆ‘ç”¨çš„æ˜¯SimpleNameï¼Œè¯´æ˜ä¸éœ€è¦è·å–è¿™ä¸ªç±»çš„åŒ…è·¯å¾„ï¼Œä¸»è¦ç±»å
+					typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName());
 				}
 			}
-			list.add(t);
+
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­åˆ—æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
+			for (int i = 0; i < columnCount; ++ i) {
+				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
+			}
+
+			String mname = null;
+			String tname = null;
+			while(rs.next()) { // æ¯å¾ªç¯ä¸€æ¬¡å°±æ˜¯ä¸€è¡Œæ•°æ®ï¼Œé‚£ä¹ˆè¦å°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°mapä¸­
+				// æ ¹æ®ç±»å…ˆå®ä¾‹åŒ–ä¸€ä¸ªå¯¹è±¡é‚£ä¸ª
+				t = (T) c.newInstance(); // t = new UserInfo();
+
+				// å¾ªç¯è¿™ä¸€è¡Œæ•°æ®ä¸­çš„æ‰€æœ‰åˆ—ï¼Œå–å‡ºæ¯ä¸€åˆ—çš„æ•°æ®
+				for (String colName : columnNames) { // usid  uname pwd
+					mname = "set" + colName; // setuisd setuname setpwd
+					// å¾ªç¯æ‰€æœ‰çš„æ–¹æ³•ï¼Œæ‰¾åˆ°è¿™ä¸€åˆ—å¯¹åº”çš„æ³¨å…¥æ˜¯setteræ–¹æ³•
+					for (Method md : setters) {
+						if (mname.equalsIgnoreCase(md.getName())) { // setUsid setUname setPwd
+							tname = typeNames.get(md.getName());
+							if ("int".equals(tname) || "Integer".equals(tname)) {
+								md.invoke(t, rs.getInt(colName)); // t.setUsid(1001) t.setUname("yc")
+							} else if ("float".equals(tname) || "Float".equals(tname)) {
+								md.invoke(t, rs.getFloat(colName));
+							} else if ("double".equals(tname) || "Double".equals(tname)) {
+								md.invoke(t, rs.getDouble(colName));
+							} else {
+								md.invoke(t, rs.getString(colName)); // t.setUsid(1001) t.setUname("yc")
+							}
+							break;
+						}
+					}
+				}
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} finally {
+			this.closeAll(rs, pstmt, con);
 		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} catch (InstantiationException e) {
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		e.printStackTrace();
-	} catch (IllegalArgumentException e) {
-		e.printStackTrace();
-	} catch (InvocationTargetException e) {
-		e.printStackTrace();
-	} finally {
-		this.closeAll(rs, pstmt, con);
+		return list;
 	}
-	return list;
-}
 
 	@SuppressWarnings("unchecked")
 	public <T> T find(Class<?> c, String sql, Object ... params) {
@@ -701,45 +701,45 @@ public <T> List<T> finds(Class<?> c, String sql, Object ... params) {
 			this.setValues(pstmt, params);
 			rs = pstmt.executeQuery();
 
-			Method[] methods = c.getDeclaredMethods(); // »ñÈ¡Ö¸¶¨µÄÀàÖĞµÄËùÓĞ·½·¨
-			List<Method> setters = new ArrayList<Method>(); // »ñÈ¡ÀàÖĞµÄËùÓĞsetter·½·¨
+			Method[] methods = c.getDeclaredMethods(); // è·å–æŒ‡å®šçš„ç±»ä¸­çš„æ‰€æœ‰æ–¹æ³•
+			List<Method> setters = new ArrayList<Method>(); // è·å–ç±»ä¸­çš„æ‰€æœ‰setteræ–¹æ³•
 			Map<String, String> typeNames = new HashMap<String, String>();
 			for(Method method : methods) {
 				if (method.getName().startsWith("set")) {
 					setters.add(method);
 
-					// »ñÈ¡Õâ¸ösetter·½·¨µÄµÚÒ»¸ö²ÎÊıµÄÀàĞÍ
-					// »ñÈ¡Õâ¸öÀàĞÍ¶ÔÓ¦µÄÀàµÄÀàĞÍ£¬ÎÒÓÃµÄÊÇSimpleName£¬ËµÃ÷²»ĞèÒª»ñÈ¡Õâ¸öÀàµÄ°üÂ·¾¶£¬Ö÷ÒªÀàÃû
-					typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName()); 
+					// è·å–è¿™ä¸ªsetteræ–¹æ³•çš„ç¬¬ä¸€ä¸ªå‚æ•°çš„ç±»å‹
+					// è·å–è¿™ä¸ªç±»å‹å¯¹åº”çš„ç±»çš„ç±»å‹ï¼Œæˆ‘ç”¨çš„æ˜¯SimpleNameï¼Œè¯´æ˜ä¸éœ€è¦è·å–è¿™ä¸ªç±»çš„åŒ…è·¯å¾„ï¼Œä¸»è¦ç±»å
+					typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName());
 				}
 			}
 
-			ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-			int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞÁĞÊıÁ¿
-			String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­åˆ—æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
 			for (int i = 0; i < columnCount; ++ i) {
 				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
 			}
 
 			String mname = null;
 			String tname = null;
-			if(rs.next()) { // Ã¿Ñ­»·Ò»´Î¾ÍÊÇÒ»ĞĞÊı¾İ£¬ÄÇÃ´Òª½«ÕâÒ»ĞĞÊı¾İ´æµ½mapÖĞ
-				// ¸ù¾İÀàÏÈÊµÀı»¯Ò»¸ö¶ÔÏóÄÇ¸ö
+			if(rs.next()) { // æ¯å¾ªç¯ä¸€æ¬¡å°±æ˜¯ä¸€è¡Œæ•°æ®ï¼Œé‚£ä¹ˆè¦å°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°mapä¸­
+				// æ ¹æ®ç±»å…ˆå®ä¾‹åŒ–ä¸€ä¸ªå¯¹è±¡é‚£ä¸ª
 				t = (T) c.newInstance(); // t = new UserInfo();
 
-				// Ñ­»·ÕâÒ»ĞĞÊı¾İÖĞµÄËùÓĞÁĞ£¬È¡³öÃ¿Ò»ÁĞµÄÊı¾İ
+				// å¾ªç¯è¿™ä¸€è¡Œæ•°æ®ä¸­çš„æ‰€æœ‰åˆ—ï¼Œå–å‡ºæ¯ä¸€åˆ—çš„æ•°æ®
 				for (String colName : columnNames) { // usid  uname pwd
 					mname = "set" + colName; // setuisd setuname setpwd
-					// Ñ­»·ËùÓĞµÄ·½·¨£¬ÕÒµ½ÕâÒ»ÁĞ¶ÔÓ¦µÄ×¢ÈëÊÇsetter·½·¨
+					// å¾ªç¯æ‰€æœ‰çš„æ–¹æ³•ï¼Œæ‰¾åˆ°è¿™ä¸€åˆ—å¯¹åº”çš„æ³¨å…¥æ˜¯setteræ–¹æ³•
 					for (Method md : setters) {
 						if (mname.equalsIgnoreCase(md.getName())) { // setUsid setUname setPwd
 							tname = typeNames.get(md.getName());
 							if ("int".equals(tname) || "Integer".equals(tname)) {
 								md.invoke(t, rs.getInt(colName)); // t.setUsid(1001) t.setUname("yc")
 							} else if ("float".equals(tname) || "Float".equals(tname)) {
-								md.invoke(t, rs.getFloat(colName)); 
+								md.invoke(t, rs.getFloat(colName));
 							} else if ("double".equals(tname) || "Double".equals(tname)) {
-								md.invoke(t, rs.getDouble(colName)); 
+								md.invoke(t, rs.getDouble(colName));
 							} else {
 								md.invoke(t, rs.getString(colName)); // t.setUsid(1001) t.setUname("yc")
 							}
@@ -762,96 +762,95 @@ public <T> List<T> finds(Class<?> c, String sql, Object ... params) {
 			this.closeAll(rs, pstmt, con);
 		}
 		return t;
-	
-}
+
+	}
 
 /*public void tets(){
 	finds(UserInfo.class, sql, params)
-	
-	
+
+
 }*/
 
-/**
- * »ùÓÚ¶ÔÏóµÄ²éÑ¯
- * @param cl Êı¾İ¶ÔÓ¦µÄÀàĞÅÏ¢
- * @param sql
- * @param params
- * @return
- */
-@SuppressWarnings("unchecked")
-public <T> T find(Class<?> c, String sql, List<Object> params) {
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+	/**
+	 * åŸºäºå¯¹è±¡çš„æŸ¥è¯¢
+	 * @param c æ•°æ®å¯¹åº”çš„ç±»ä¿¡æ¯
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> T find(Class<?> c, String sql, List<Object> params) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-	T t = null;
-	try {
-		con = this.getConnection();
-		pstmt = con.prepareStatement(sql);
-		this.setValues(pstmt, params);
-		rs = pstmt.executeQuery();
+		T t = null;
+		try {
+			con = this.getConnection();
+			pstmt = con.prepareStatement(sql);
+			this.setValues(pstmt, params);
+			rs = pstmt.executeQuery();
 
-		Method[] methods = c.getDeclaredMethods(); // »ñÈ¡Ö¸¶¨µÄÀàÖĞµÄËùÓĞ·½·¨
-		List<Method> setters = new ArrayList<Method>(); // »ñÈ¡ÀàÖĞµÄËùÓĞsetter·½·¨
-		Map<String, String> typeNames = new HashMap<String, String>();
-		for(Method method : methods) {
-			if (method.getName().startsWith("set")) {
-				setters.add(method);
+			Method[] methods = c.getDeclaredMethods(); // è·å–æŒ‡å®šçš„ç±»ä¸­çš„æ‰€æœ‰æ–¹æ³•
+			List<Method> setters = new ArrayList<Method>(); // è·å–ç±»ä¸­çš„æ‰€æœ‰setteræ–¹æ³•
+			Map<String, String> typeNames = new HashMap<String, String>();
+			for(Method method : methods) {
+				if (method.getName().startsWith("set")) {
+					setters.add(method);
 
-				// »ñÈ¡Õâ¸ösetter·½·¨µÄµÚÒ»¸ö²ÎÊıµÄÀàĞÍ
-				// »ñÈ¡Õâ¸öÀàĞÍ¶ÔÓ¦µÄÀàµÄÀàĞÍ£¬ÎÒÓÃµÄÊÇSimpleName£¬ËµÃ÷²»ĞèÒª»ñÈ¡Õâ¸öÀàµÄ°üÂ·¾¶£¬Ö÷ÒªÀàÃû
-				typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName()); 
+					// è·å–è¿™ä¸ªsetteræ–¹æ³•çš„ç¬¬ä¸€ä¸ªå‚æ•°çš„ç±»å‹
+					// è·å–è¿™ä¸ªç±»å‹å¯¹åº”çš„ç±»çš„ç±»å‹ï¼Œæˆ‘ç”¨çš„æ˜¯SimpleNameï¼Œè¯´æ˜ä¸éœ€è¦è·å–è¿™ä¸ªç±»çš„åŒ…è·¯å¾„ï¼Œä¸»è¦ç±»å
+					typeNames.put(method.getName(), method.getParameterTypes()[0].getSimpleName());
+				}
 			}
-		}
 
-		ResultSetMetaData rsmd = rs.getMetaData(); // »ñÈ¡½á¹û¼¯ÔÚÔªÊı¾İĞÅÏ¢
-		int columnCount = rsmd.getColumnCount(); // »ñÈ¡½á¹û¼¯ÖĞÁĞÊıÁ¿
-		String[] columnNames = new String[columnCount]; // ÉùÃ÷Ò»¸öÊı×é£¬ÓÃÀ´´æ·ÅÁĞµÄÃû³Æ
-		for (int i = 0; i < columnCount; ++ i) {
-			columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
-		}
+			ResultSetMetaData rsmd = rs.getMetaData(); // è·å–ç»“æœé›†åœ¨å…ƒæ•°æ®ä¿¡æ¯
+			int columnCount = rsmd.getColumnCount(); // è·å–ç»“æœé›†ä¸­åˆ—æ•°é‡
+			String[] columnNames = new String[columnCount]; // å£°æ˜ä¸€ä¸ªæ•°ç»„ï¼Œç”¨æ¥å­˜æ”¾åˆ—çš„åç§°
+			for (int i = 0; i < columnCount; ++ i) {
+				columnNames[i] = rsmd.getColumnName(i + 1).toLowerCase();
+			}
 
-		String mname = null;
-		String tname = null;
-		if(rs.next()) { // Ã¿Ñ­»·Ò»´Î¾ÍÊÇÒ»ĞĞÊı¾İ£¬ÄÇÃ´Òª½«ÕâÒ»ĞĞÊı¾İ´æµ½mapÖĞ
-			// ¸ù¾İÀàÏÈÊµÀı»¯Ò»¸ö¶ÔÏóÄÇ¸ö
-			t = (T) c.newInstance(); // t = new UserInfo();
+			String mname = null;
+			String tname = null;
+			if(rs.next()) { // æ¯å¾ªç¯ä¸€æ¬¡å°±æ˜¯ä¸€è¡Œæ•°æ®ï¼Œé‚£ä¹ˆè¦å°†è¿™ä¸€è¡Œæ•°æ®å­˜åˆ°mapä¸­
+				// æ ¹æ®ç±»å…ˆå®ä¾‹åŒ–ä¸€ä¸ªå¯¹è±¡é‚£ä¸ª
+				t = (T) c.newInstance(); // t = new UserInfo();
 
-			// Ñ­»·ÕâÒ»ĞĞÊı¾İÖĞµÄËùÓĞÁĞ£¬È¡³öÃ¿Ò»ÁĞµÄÊı¾İ
-			for (String colName : columnNames) { // usid  uname pwd
-				mname = "set" + colName; // setuisd setuname setpwd
-				// Ñ­»·ËùÓĞµÄ·½·¨£¬ÕÒµ½ÕâÒ»ÁĞ¶ÔÓ¦µÄ×¢ÈëÊÇsetter·½·¨
-				for (Method md : setters) {
-					if (mname.equalsIgnoreCase(md.getName())) { // setUsid setUname setPwd
-						tname = typeNames.get(md.getName());
-						if ("int".equals(tname) || "Integer".equals(tname)) {
-							md.invoke(t, rs.getInt(colName)); // t.setUsid(1001) t.setUname("yc")
-						} else if ("float".equals(tname) || "Float".equals(tname)) {
-							md.invoke(t, rs.getFloat(colName)); 
-						} else if ("double".equals(tname) || "Double".equals(tname)) {
-							md.invoke(t, rs.getDouble(colName)); 
-						} else {
-							md.invoke(t, rs.getString(colName)); // t.setUsid(1001) t.setUname("yc")
+				// å¾ªç¯è¿™ä¸€è¡Œæ•°æ®ä¸­çš„æ‰€æœ‰åˆ—ï¼Œå–å‡ºæ¯ä¸€åˆ—çš„æ•°æ®
+				for (String colName : columnNames) { // usid  uname pwd
+					mname = "set" + colName; // setuisd setuname setpwd
+					// å¾ªç¯æ‰€æœ‰çš„æ–¹æ³•ï¼Œæ‰¾åˆ°è¿™ä¸€åˆ—å¯¹åº”çš„æ³¨å…¥æ˜¯setteræ–¹æ³•
+					for (Method md : setters) {
+						if (mname.equalsIgnoreCase(md.getName())) { // setUsid setUname setPwd
+							tname = typeNames.get(md.getName());
+							if ("int".equals(tname) || "Integer".equals(tname)) {
+								md.invoke(t, rs.getInt(colName)); // t.setUsid(1001) t.setUname("yc")
+							} else if ("float".equals(tname) || "Float".equals(tname)) {
+								md.invoke(t, rs.getFloat(colName));
+							} else if ("double".equals(tname) || "Double".equals(tname)) {
+								md.invoke(t, rs.getDouble(colName));
+							} else {
+								md.invoke(t, rs.getString(colName)); // t.setUsid(1001) t.setUname("yc")
+							}
+							break;
 						}
-						break;
 					}
 				}
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} finally {
+			this.closeAll(rs, pstmt, con);
 		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} catch (InstantiationException e) {
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		e.printStackTrace();
-	} catch (IllegalArgumentException e) {
-		e.printStackTrace();
-	} catch (InvocationTargetException e) {
-		e.printStackTrace();
-	} finally {
-		this.closeAll(rs, pstmt, con);
+		return t;
 	}
-	return t;
 }
-}
-
