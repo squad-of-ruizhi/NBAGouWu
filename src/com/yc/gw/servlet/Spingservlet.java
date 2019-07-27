@@ -20,16 +20,25 @@ public class Spingservlet extends BasicServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String op=request.getParameter("op");
-		 System.out.println(op);
-		 
 		 if("findAll".equals(op)){
 			 findAll(request,response);
+		 }else if("findcate".equals(op)){
+			 finadcate(request,response);
 		 }
 		 
 	}
 	
 	
-    private void findAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void finadcate(HttpServletRequest request, HttpServletResponse response) throws IOException  {
+    	String spcate=request.getParameter("spcate");
+    	ISpingBiz  spingBiz=new  SpingBizImpl();
+   	    List<Sping>  list=spingBiz.findcate(spcate);
+     	 this.send(response, list);
+		
+	}
+
+
+	private void findAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	 ISpingBiz  spingBiz=new  SpingBizImpl();
     	 List<Sping>  list=spingBiz.findAll();
     	 this.send(response, list);

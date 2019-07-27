@@ -14,5 +14,11 @@ public class SpingBizImpl implements ISpingBiz {
 		ISpingDao dao=new  SpingDaoImpl();
 			return dao.findAll();
 	}
+	
+	@Override
+	 public List<Sping> findcate(String spcate){
+		 ISpingDao dao=new SpingDaoImpl();
+		 return dao.findcate(spcate);
+	 }
 
 }

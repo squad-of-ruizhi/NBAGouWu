@@ -7,33 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="short icon" href="images/NBAlogo.jpg"  />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-<script src="js/index.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#shoppingcar").mouseover(function() {
-		$(".header_menu").show();
-	});
-	$("#shoppingcar").mouseout(function() {
-		$(".header_menu").hide();
-	});
-	$("#header_menu").mouseover(function() {
-		$(".header_menu").show();
-	});
-})
-	
-function change(id){
-	$(this).attr("src","images/open.png");
-	console.info(id);
-	if($("#"+id+" a img").attr("src") == "images/open.png"){
-		$("#"+id+" a img").attr("src", "images/close.png");
-	} else{
-		$("#"+id+" a img").attr("src", "images/open.png");
-	}
-}
-	
-	
-</script>
-	
+
 </head>
 
 <body>
@@ -119,7 +93,7 @@ function change(id){
 	<!-- 导航 -->
     <nav>
         <ul id="padCheck">
-          	<li>
+          	<li id="padChecka">
 			  	<a href="#">选择球队</a>
 		  	</li>
           	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
@@ -127,7 +101,7 @@ function change(id){
 				<a href="#">品牌</a>
 			</li>
           	<li>
-				<a href="#">所有商品</a>
+				<a href="index.html">所有商品</a>
 			</li>
           	<li>
 				<a href="#">球衣</a>
@@ -142,7 +116,7 @@ function change(id){
 				<a href="#">女子</a>
 			</li>
           	<li>
-				<a href="#">儿童/青少年</a>
+				<a href="#">青年</a>
 			</li>
           	<li>
 				<a href="#">鞋类</a>
@@ -197,14 +171,14 @@ function change(id){
 		<div style="height: 50px; width: 100%;"></div>
 	</div>
 <div id="right">
-		<div id="right_list">
-			<select id="right_list_left">
+		 <div id="right_list">
+			 <select id="right_list_left">
 				<option>按新品</option>
 				<option>按热销</option>
 				<option>按价格</option>
 				<option>按价格</option>
-				<option>按价格</option>
-			</select>
+				<option>按价格</option> 
+			</select> 
 		  <select id="right_list_right">
 				<option>每页10件商品</option>
 				<option>每页20件商品</option>
@@ -213,14 +187,15 @@ function change(id){
 				<option>每页50件商品</option>
 			</select>
 		</div>
-		<div id="commodity">
-			<!--  <div class="commo">
-		    	<a href="buy.html"><img src="images/com_1.jpg" width="150" height="150"  alt=""/></a>
+		 <div id="commodity"> 
+			 <!--     <div class="commo" >
+		    	 <a href="buy.html"><img src="images/com_1.jpg" width="150" height="150"  alt=""/></a>
 				<h2>NBA 斯伯丁 Spalding<br /> 德鲁大叔 PU 室内外7</h2>
-				<p><span>¥399.00</span></p>
-			</div>  -->
+				<p><span>¥399.00</span></p> 
+			</div> -->    
+			 </div>  
 		</div>
-	</div>
+	
 	<!-- 脚部 -->
 	<div id="foot">
         <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
@@ -277,5 +252,35 @@ function change(id){
 		  </p>
 		</div>
 </div>
+
+<script src="js/index.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#shoppingcar").mouseover(function() {
+		$(".header_menu").show();
+	});
+	$("#shoppingcar").mouseout(function() {
+		$(".header_menu").hide();
+	});
+	$("#header_menu").mouseover(function() {
+		$(".header_menu").show();
+	});
+})
+	
+function change(id){
+	$(this).attr("src","images/open.png");
+	console.info(id);
+	if($("#"+id+" a img").attr("src") == "images/open.png"){
+		$("#"+id+" a img").attr("src", "images/close.png");
+	} else{
+		$("#"+id+" a img").attr("src", "images/open.png");
+	}
+}
+	
+	
+
+</script>
 </body>
 </html>
+
+
