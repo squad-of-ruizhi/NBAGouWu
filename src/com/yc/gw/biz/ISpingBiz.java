@@ -9,5 +9,12 @@ public interface ISpingBiz {
     
 	  public List<Sping> findAll();
 	
+	 
+
+	public List<Sping> findcate(String spcate);
+
+
+
+
  
 }

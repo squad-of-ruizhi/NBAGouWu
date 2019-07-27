@@ -10,9 +10,15 @@ public class SpingDaoImpl implements ISpingDao {
 	public List<Sping> findAll() {
 		DBHelper db=new  DBHelper();
 		String sql="select spid,spname,spprice,sppic,spsize,spcolor,spcate from  sp order by spid";
-		System.out.println( db.finds(Sping.class, sql));
 		return  db.finds(Sping.class, sql);
 		
 	}
 
+	
+	 public List<Sping> findcate(String spcate){
+		 DBHelper db=new DBHelper();
+		 String sql="select spid,spname,spprice,sppic,spsize,spcolor from  sp where spcate= ? ";
+	     return  db.finds(Sping.class,sql,spcate);
+		 
+	 }
 }
