@@ -24,15 +24,18 @@ public class Spingservlet extends BasicServlet {
 			 findAll(request,response);
 		 }else if("findcate".equals(op)){
 			 finadcate(request,response);
+
 		 }else if("findSingle".equals(op)){
 			  findSingle(request,response);
 		 }else if("favorite".equals(op)){
 			   findfavorite(request,response);
+ master
 		 }
 		 
 	}
 	
 	
+
 	private void findfavorite(HttpServletRequest request, HttpServletResponse response) throws IOException {
                String spcateL=request.getParameter("spcateL");
                String spIdL=request.getParameter("spIdL");
@@ -50,6 +53,7 @@ public class Spingservlet extends BasicServlet {
 
 
 	
+
 
 
 	private void finadcate(HttpServletRequest request, HttpServletResponse response) throws IOException  {

@@ -22,6 +22,7 @@ public class SpingBizImpl implements ISpingBiz {
 		 return dao.findcate(spcate);
 	 }
 
+
 	@Override
 	public Sping findSingle(String spId) {
 		 ISpingDao dao=new SpingDaoImpl();
@@ -34,5 +35,7 @@ public class SpingBizImpl implements ISpingBiz {
 		 return dao.findcateL(spcateL,spIdL);
 	}
 	
+=======
+
 
 }
