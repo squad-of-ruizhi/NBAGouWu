@@ -15,11 +15,13 @@ public interface ISpingBiz {
 	public List<Sping> findcate(String spcate);
 
 
+
 	
  public List<Sping> findcateL(String spcateL,String spIdL);
 
 
 	Sping findSingle(String spId);
+
 
 
 

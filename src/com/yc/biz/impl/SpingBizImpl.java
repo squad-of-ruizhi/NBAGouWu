@@ -33,6 +33,5 @@ public class SpingBizImpl implements ISpingBiz {
 		ISpingDao dao=new SpingDaoImpl();
 		 return dao.findcateL(spcateL,spIdL);
 	}
-	
 
 }
