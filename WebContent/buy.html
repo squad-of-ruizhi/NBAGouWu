@@ -6,21 +6,262 @@
 <title>NBA   Store</title>
 <link rel="short icon" href="images/NBAlogo.jpg"  />
 <link rel="stylesheet" href="css/buy.css" />
-<script src="js/jquery-1.9.1.js"></script>
+
+</head>
+<body>
+     <header>
+		<div class="ul_01">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">我的账户</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;购物车</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
+			</ul>
+		</div>
+    	<img src="images/logo_cn.png" width="218" height="58"  style="margin-left:94px;" alt=""/>
+		<input type="text" id="search" placeholder="专区体恤现时2折8件" />
+		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
+		<div class="newly-added-shop">
+			<ul>
+				<li><a href="#">定制T恤</a></li>
+				<li><a href="#">定制球衣</a></li>
+			</ul>
+		</div>
+	</header>
+	
+	<!-- 导航 -->
+    <nav>
+        <ul id="padCheck">
+          	<li>
+			  	<a href="#">选择球队</a>
+		  	</li>
+          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
+          	<li>
+				<a href="#">品牌</a>
+			</li>
+          	<li>
+				<a href="#">所有商品</a>
+			</li>
+          	<li>
+				<a href="#">球衣</a>
+			</li>
+          	<li>
+				<a href="#">上衣</a>
+			</li>
+          	<li>
+				<a href="#">下装</a>
+			</li>
+          	<li>
+				<a href="#">女子</a>
+			</li>
+          	<li>
+				<a href="#">儿童/青少年</a>
+			</li>
+          	<li>
+				<a href="#">鞋类</a>
+			</li>
+          	<li>
+				<a href="#">篮球</a>
+			</li>
+          	<li>
+				<a href="#">配件</a>
+			</li>
+      </ul>
+    </nav>
+
+    <tbody >
+      <div class="ad" >
+           <p>订单信息 </p>
+           <p style="margin-top:-20px;color:#c0c0c0;">-------------------------------------------------------------------------------------------</p>
+          <div id="fga">
+           <p style="font-size:18px;margin-top:5px;color:black;">&nbsp&nbsp收货地址信息</p>
+           <p class="add-name events-nameVal" style="font-size:15px;margin-top:17px;color:black;">您还沒有收货地址</p>
+           <div class="btn">
+           <p style="font-size:15px;color:white;text-align:center;margin-top:-9px;" id="add" >添加地址</p>
+           <p class="events-addressVal" style="margin-top:3px;font-size:15px;">您可以在<a href="DingDan.html" style="color:red;">地址簿</a>
+				中设置地址</p>
+           </div>
+           </div>
+         <p style="margin-top:172px;color:#c0c0c0;margin-left:-5px;">--------------------------------------------------------------</p>
+      </div>
+     <div class="right">
+          <P style="font-size:20px;text-align:center;padding-top:10px;">订单详情</P>
+          <p style="color:white;">-------------------------------------------------------------</p>
+          <div class="buy_right">
+            <div id="abcd">
+              <!-- <span class="dtl-name">订单产品总额</span>
+                <span class="dtl-pic">￥140.00</span> -->
+               </div>
+                
+                <span class="dtl-name">实付运费</span>
+                <span class="dtl-pic" id="dtl-pic">￥10.00</span>
+                
+                <div id="number">
+                <!-- <span class="dtl-name">商品数量总计</span>
+                <span class="dtl-pic"></span> --></div>
+                
+                <span class="dtl-name">积分抵扣</span>
+                <span class="dtl-pic">-￥0.00</span>
+                
+                <div id="priceaa">
+               <!--  <span class="dtl-name" style="font-size:22px;padding-top:10px;">订单总计</span>
+                <span class="dtl-pic" style="font-size:22px;padding-top:10px;">￥139.0</span> -->
+                </div>
+                
+                 <div class="js">
+					<button class="button"  id="buynext">结算</button>
+				</div>
+				
+          </div>
+          <p style="color:white;">--------------------------------------------------------------</p>
+          
+          <div class="jy"> 
+               <ul class="list-unstyled" id="list-unstyled">
+		<!-- 定制T恤  添加购物车 -->
+			<!-- 定制T恤  立即购买 -->
+			<!-- 普通商品 -->
+			<!-- <li class="dtl-box">
+				<a class="thumbnail">
+					<img src="images/89.jpg " style="margin-left:15px;margin-top:15px;width:120px;height:120px;"></img>
+				</a>
+				<div class="dtl-box-tx">
+					<p class="dtl-pdn" style="color:red;margin-left:140px;margin-top:-120px;">NBA PopSockets手机气囊支架-热火</p>
+					<p class="dtl-box-row">
+						<span class="dtl-qty"  >数量：1</span>
+						<span class="dtl-size">尺寸:F</span>
+						<span class="dtl-color">颜色：图片色</span>
+					</p>
+				</div>
+				<p class="dtl-box-pic">
+					<span>¥129.00</span>
+					</p>
+			</li> -->
+			</ul>
+          </div>
+     </div>
+    
+   <div class="sf">
+     <p style="font-size:23px;color:#58595b;">支持付款方式:</p>
+    <p style="font-size:15px;color:#58595b;margin-top:27px;">支付宝支付</p></li>
+     <p style="font-size:15px;color:#58595b;margin-top:18px;">微信支付</p>
+      <p style="font-size:15px;color:#58595b;margin-top:18px;">银行卡支付</p>
+      <img src="images/ZF.jpg" style="width:130px;height:80px;margin-top:18px;"></img>
+       <img src="images/WX.jpg" style="width:100px;height:100px;margin-top:18px;"></img>
+       
+   </div>
+    
+    
+    </tbody>
+    
+    <div id="foot">
+        <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
+		<div id="foot_div2">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">说出你想要的</a></li>
+				<li><a href="#">门店位置</a></li>
+				<li><a href="#">帮助</a></li>
+			</ul>
+		</div>
+		<div id="foot_div3">
+			<p id="p1">联系我们</p>
+			<div id="p2">
+				<ul>
+					<li>
+						<i class="fa fa-envelope-o fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">service@nbastore.cn</a>
+					</li>
+					<li>
+						<i class="fa fa-phone fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">400-0066-802（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-comments fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">在线客服（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-weibo fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">NBASTORE官方微博</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="footline"></div>
+	  <div id="foot_content">
+			<p id="f_c1">沪ICP备 14013659-2号 
+				<a href="#">使用条款</a>
+				<a>|</a>
+				<a href="#">隐私政策</a>
+				<a>|</a>
+				<a href="#">退换货政策</a>
+			</p>
+		  <p id="f_c2"><a href="#">
+			  <img src="images/icon-b.png" width="20" height="20" alt=""/>
+			  沪公网安备 31010802001463号 公司证件
+			  </a>
+		  </p>
+		  <p id="f_c3">
+			  ©2017 NBA Media Ventures, LLC.保留所有权利。NBAStore.com.cn/NBAStore.cn上的任何部分都不得以任何形式被复制、再传播，或篡改。
+		  </p>
+		  <p id="f_c4">
+		  	  。
+		  </p>
+		</div>
+</div>
+     <div class="addDZ" id="addDZ">
+       <p>添加地址</p>
+       <div class="form" id="form">
+           <p style="font-size:18px;">收货人姓名:</p><input type="text" name="uname" id="uname"  placeholder="&nbsp&nbsp请输入收货人姓名" class="input"></input></br>
+          <p style="width:280px;height:70px;margin-left:-280px;font-size:18px;">手机号码:</p><input type="text" name="tel" id="tel" placeholder="&nbsp&nbsp请输入手机号码" class="input"></input>
+          <p style="width:280px;height:70px;margin-left:-280px;margin-top:70px;font-size:18px;">邮箱:</p><input type="text" name="YXiang" id="YXiang" placeholder="&nbsp&nbsp请输入收货人邮箱" class="input"></input></br>
+       <p style="width:140px;height:70px;margin-left:-280px;margin-top:30px;font-size:18px;">收货人区域:</p>
+         <select id="province" style="width:200px;margin-left:-115px;"></select><select id="city" style="width:200px;"></select><select id="area"></select></br>
+       <p style="width:280px;height:70px;margin-left:-142px;margin-top:30px;font-size:18px;">地址:</p><input type="text" name="DZ" id="DZ" placeholder="&nbsp&nbsp请输入您居住的详细地址" class="input" style="margin-top:18px;"></input>
+          <div class="btn1">
+           <p style="font-size:17px;color:white;text-align:center;margin-left:-67px;margin-top:6px;" onclick="addAddress()">使用该地址</p> 
+           </div>
+     </div>
+     </div>
+     
+     <div class="events-DefaultAddress" id="events-DefaultAddress">
+     <div  id="ppp">
+        <!-- <p style="text-align: center;font-size:18px;"> 地址信息</p>
+		<p class="add-name">杨风雨</p>
+		<p class="events-phoneVal">+86 15575522311</p>
+		<p class="events-mailVal">597550427@qq.com</p>
+		<p class="events-addressVall">浙江省  舟山市  定海区  娜娜桦 aa</p> -->
+		</div>
+		
+		<div class="edit-btn-row">
+			<a class="edit-events-otherAdd" href="#" onclick="bddZ()">
+				<span>+ 添加其他收货地址</span>
+			</a>
+			<a class="edit-btn" href="#" onclick="bddZ()">
+				<span>编辑</span>
+			</a>
+		</div>
+	</div>
+	
+
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script src="js/buy.js"></script>
 <script>
-function add(){
+/* function add(){
 	if($("#addDZ").css("display")=="none"){
 	$("#addDZ").css("display","block");
 }else{
 	$("#addDZ").css("display","none");
 	}
-}
+} */
 
 
-function addAddress(){
+/* function addAddress(){
 	$("#events-DefaultAddress").css("display","block");
 	$("#addDZ").css("display","none");
-}
+} */
 	
 window.onload = function() {
 	var provinceObj	= document.getElementById("province");
@@ -106,233 +347,5 @@ function addOption(node, obj) {
 
 
 </script>
-</head>
-<body>
-     <header>
-		<div class="ul_01">
-			<ul>
-				<li><a href="#">登陆/注册</a></li>
-				<li><a href="#">|</a></li>
-				<li><a href="#">我的账户</a></li>
-				<li><a href="#">|</a></li>
-				<li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;购物车</a></li>
-				<li><a href="#">|</a></li>
-				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
-			</ul>
-		</div>
-    	<img src="images/logo_cn.png" width="218" height="58"  style="margin-left:94px;" alt=""/>
-		<input type="text" id="search" placeholder="专区体恤现时2折8件" />
-		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
-		<div class="newly-added-shop">
-			<ul>
-				<li><a href="#">定制T恤</a></li>
-				<li><a href="#">定制球衣</a></li>
-			</ul>
-		</div>
-	</header>
-	
-	<!-- 导航 -->
-    <nav>
-        <ul id="padCheck">
-          	<li>
-			  	<a href="#">选择球队</a>
-		  	</li>
-          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
-          	<li>
-				<a href="#">品牌</a>
-			</li>
-          	<li>
-				<a href="#">所有商品</a>
-			</li>
-          	<li>
-				<a href="#">球衣</a>
-			</li>
-          	<li>
-				<a href="#">上衣</a>
-			</li>
-          	<li>
-				<a href="#">下装</a>
-			</li>
-          	<li>
-				<a href="#">女子</a>
-			</li>
-          	<li>
-				<a href="#">儿童/青少年</a>
-			</li>
-          	<li>
-				<a href="#">鞋类</a>
-			</li>
-          	<li>
-				<a href="#">篮球</a>
-			</li>
-          	<li>
-				<a href="#">配件</a>
-			</li>
-      </ul>
-    </nav>
-
-    <tbody>
-      <div class="ad">
-           <p>订单信息 </p>
-           <p style="margin-top:-20px;color:#c0c0c0;">-------------------------------------------------------------------------------------------</p>
-           <p style="font-size:18px;margin-top:5px;color:black;">收货地址信息</p>
-           <p class="add-name events-nameVal" style="font-size:15px;margin-top:17px;color:black;">您还沒有收货地址</p>
-           <div class="btn">
-           <p style="font-size:15px;color:white;text-align:center;margin-top:-9px;" id="add" onclick="add()">添加地址</p>
-           <p class="events-addressVal" style="margin-top:3px;font-size:15px;">您可以在<a href="/memberaddress/list" style="color:red;">地址簿</a>
-				中设置地址</p>
-           </div>
-         <p style="margin-top:120px;color:#c0c0c0;margin-left:-5px;">--------------------------------------------------------------</p>
-      </div>
-     <div class="right">
-          <P style="font-size:20px;text-align:center;padding-top:10px;">订单详情</P>
-          <p style="color:white;">-------------------------------------------------------------</p>
-          <div class="buy_right">
-              <span class="dtl-name">订单产品总额</span>
-                <span class="dtl-pic">￥120.00</span>
-                
-                <span class="dtl-name">实付运费</span>
-                <span class="dtl-pic">￥10.00</span>
-                
-                <span class="dtl-name">折扣总额</span>
-                <span class="dtl-pic">-￥0.00</span>
-                
-                <span class="dtl-name">积分抵扣</span>
-                <span class="dtl-pic">-￥0.00</span>
-                
-                <span class="dtl-name" style="font-size:22px;padding-top:10px;">订单总计</span>
-                <span class="dtl-pic" style="font-size:22px;padding-top:10px;">￥139.0</span>
-                
-                 <div class="js">
-					<button class="button" onclick="window.open('DingDan.html') ">结算</button>
-				</div>
-				
-          </div>
-          <p style="color:white;">--------------------------------------------------------------</p>
-          
-          <div class="jy"> 
-               <ul class="list-unstyled">
-		<!-- 定制T恤  添加购物车 -->
-			<!-- 定制T恤  立即购买 -->
-			<!-- 普通商品 -->
-			<li class="dtl-box">
-				<a class="thumbnail">
-					<img src="images/89.jpg " style="margin-left:15px;margin-top:15px;width:120px;height:120px;"></img>
-				</a>
-				<div class="dtl-box-tx">
-					<p class="dtl-pdn" style="color:red;margin-left:140px;margin-top:-120px;">NBA PopSockets手机气囊支架-热火</p>
-					<p class="dtl-box-row">
-						<span class="dtl-qty"  >数量：1</span>
-						<span class="dtl-size">尺寸:F</span>
-						<span class="dtl-color">颜色：图片色</span>
-					</p>
-				</div>
-				<p class="dtl-box-pic">
-					<span>¥129.00</span>
-					</p>
-			</li>
-			</ul>
-          </div>
-     </div>
-    
-   <div class="sf">
-     <p style="font-size:23px;color:#58595b;">支持付款方式:</p>
-    <p style="font-size:15px;color:#58595b;margin-top:27px;">支付宝支付</p></li>
-     <p style="font-size:15px;color:#58595b;margin-top:18px;">微信支付</p>
-      <p style="font-size:15px;color:#58595b;margin-top:18px;">银行卡支付</p>
-      <img src="images/ZF.jpg" style="width:130px;height:80px;margin-top:18px;"></img>
-       <img src="images/WX.jpg" style="width:100px;height:100px;margin-top:18px;"></img>
-       
-   </div>
-    
-    
-    </tbody>
-    
-    <div id="foot">
-        <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
-		<div id="foot_div2">
-			<ul>
-				<li><a href="#">登陆/注册</a></li>
-				<li><a href="#">说出你想要的</a></li>
-				<li><a href="#">门店位置</a></li>
-				<li><a href="#">帮助</a></li>
-			</ul>
-		</div>
-		<div id="foot_div3">
-			<p id="p1">联系我们</p>
-			<div id="p2">
-				<ul>
-					<li>
-						<i class="fa fa-envelope-o fa-inverse"></i>&nbsp;&nbsp;
-						<a href="#">service@nbastore.cn</a>
-					</li>
-					<li>
-						<i class="fa fa-phone fa-inverse"></i>&nbsp;&nbsp;
-						<a href="#">400-0066-802（9:00 – 22:00）</a>
-					</li>
-					<li>
-						<i class="fa fa-comments fa-inverse"></i>&nbsp;&nbsp;
-						<a href="#">在线客服（9:00 – 22:00）</a>
-					</li>
-					<li>
-						<i class="fa fa-weibo fa-inverse"></i>&nbsp;&nbsp;
-						<a href="#">NBASTORE官方微博</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div id="footline"></div>
-	  <div id="foot_content">
-			<p id="f_c1">沪ICP备 14013659-2号 
-				<a href="#">使用条款</a>
-				<a>|</a>
-				<a href="#">隐私政策</a>
-				<a>|</a>
-				<a href="#">退换货政策</a>
-			</p>
-		  <p id="f_c2"><a href="#">
-			  <img src="images/icon-b.png" width="20" height="20" alt=""/>
-			  沪公网安备 31010802001463号 公司证件
-			  </a>
-		  </p>
-		  <p id="f_c3">
-			  ©2017 NBA Media Ventures, LLC.保留所有权利。NBAStore.com.cn/NBAStore.cn上的任何部分都不得以任何形式被复制、再传播，或篡改。
-		  </p>
-		  <p id="f_c4">
-		  	  。
-		  </p>
-		</div>
-</div>
-     <div class="addDZ" id="addDZ">
-       <p>添加地址</p>
-       <div class="form" id="form">
-           <p style="font-size:18px;">收货人姓名:</p><input type="text" name="uname"   placeholder="&nbsp&nbsp请输入收货人姓名" class="input"></input></br>
-          <p style="width:280px;height:70px;margin-left:-280px;font-size:18px;">手机号码:</p><input type="text" name="tel" placeholder="&nbsp&nbsp请输入手机号码" class="input"></input>
-          <p style="width:280px;height:70px;margin-left:-280px;margin-top:70px;font-size:18px;">邮箱:</p><input type="text" name="YXiang"  placeholder="&nbsp&nbsp请输入收货人邮箱" class="input"></input></br>
-       <p style="width:140px;height:70px;margin-left:-280px;margin-top:30px;font-size:18px;">收货人区域:</p>
-         <select id="province" style="width:200px;margin-left:-115px;"></select><select id="city" style="width:200px;"></select><select id="area"></select></br>
-       <p style="width:280px;height:70px;margin-left:-142px;margin-top:30px;font-size:18px;">地址:</p><input type="text" name="YXiang"  placeholder="&nbsp&nbsp请输入您居住的详细地址" class="input" style="margin-top:18px;"></input>
-          <div class="btn1">
-           <p style="font-size:17px;color:white;text-align:center;margin-left:-67px;margin-top:6px;" onclick="addAddress()">使用该地址</p> 
-           </div>
-     </div>
-     </div>
-     
-     <div class="events-DefaultAddress" id="events-DefaultAddress">
-        <p style="text-align: center;font-size:18px;"> 地址信息</p>
-		<p class="add-name">杨风雨</p>
-		<p class="events-phoneVal">+86 15575522311</p>
-		<p class="events-mailVal">597550427@qq.com</p>
-		<p class="events-addressVall">浙江省  舟山市  定海区  娜娜桦 aa</p>
-		
-		<div class="edit-btn-row">
-			<a class="edit-events-otherAdd">
-				<span>+ 添加其他收货地址</span>
-			</a>
-			<a class="edit-btn">
-				<span>编辑</span>
-			</a>
-		</div>
-	</div>
 </body>
 </html>

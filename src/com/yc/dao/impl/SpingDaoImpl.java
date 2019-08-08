@@ -36,7 +36,6 @@ public class SpingDaoImpl implements ISpingDao {
 	public List<Sping> findcateL(String spcateL,String spIdL) {
 		 DBHelper db=new DBHelper();
 		 String sql="select  spId,spname,spprice,sppic,spsize,spcolor from  sp where   spcate= ? and  spid != ?  ";
-		 System.out.println(db.finds(Sping.class,sql,spcateL,spIdL));
 	     return  db.finds(Sping.class,sql,spcateL,spIdL);
 	}
 }

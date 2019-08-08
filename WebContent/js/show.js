@@ -1,13 +1,24 @@
 /**
  * 
  */
+
+/*var usid=location.hash;*/
+/*var spIda=location.hash;
+spIda=spIda.replace("#"," ");
+spIda=spIda.split("&");
+console.log(spIda);
+spId=spIda[0];
+usid=spIda[1]
+ $("#pdp-ids").html(spId);*/
+ /*console.log(spId);
+ console.log(usid);*/
+var spid=location.hash;
+spId=spid.replace("#"," ")
+$("#pdp-ids").html(spId);
+var usid = sessionStorage.getItem("usid");
+
+
 $(function(){
-	var spId=location.hash;
-	spId=spId.replace("#","");
- $("#pdp-ids").html(spId);
-	console.log(spId);
-	 
-	 
 	$.post("Sping",{op:"findSingle",spId:spId},function(data){
 	      var str="";
 	      str+='<img class="events-pdp-cloudzoom" src="'+data.sppic+'"  width="448" height="448" style="user-select: none;padding-top:35px;"></img>';
@@ -17,7 +28,7 @@ $(function(){
 	      var str1="";
 	          str1+='<h1 id="itemName_pc">'+data.spname+'';       /*NBA斯伯丁 TF-1000 LEGACY·传奇 篮球 室内篮球*/
 	         str1+= '</h1>';
-	         str1+='<p class="pdp-price" id="pdpPrice_pc">¥'+data.spprice+'</p></br><hr/>';
+	         str1+='<p class="pdp-price" id="pdpPrice_pc">¥'+data.spprice+'.00</p></br><hr/>';
 	          $("#itemName_pca").html(str1);
 	      
 	          var str2="";
@@ -32,7 +43,8 @@ $(function(){
      	   $("#breadcrumb").html(str3);
      	   
      	   var spId=data.spId;
-     	    
+     	   var spIda=data.spId;
+     	    testa(spIda);
      	    test($(".types").val(),spId);
 },"json")
 
@@ -44,12 +56,12 @@ function test(type,type1){
 			 var str="";
 			   $.each(data,function(index,item){
 				str+='<li style="margin-top:18px; height:340px;width:247px;float:left;">';
-				str+='<a class="thumbnail" href=" " product_id="'+item.spId+'">';	
+				str+='<a class="thumbnail" href="index.html" product_id="'+item.spId+'">';	
 				str+='<img src="'+item.sppic+'" style="margin-top:27px;width:220px;width:224px;"></img>';		
 				str+='</a>';
 			    str+='<h2>'+item.spname+'</h2>';
 			    str+='<p>'
-			    str+='<span>¥'+item.spprice+'</span>'		
+			    str+='<span>¥'+item.spprice+'.00</span>'		
                 str+='</p>';
 			    str+='</li>';
 			     })
@@ -64,4 +76,36 @@ function test(type,type1){
 	   console.log(spcate+"***");*/
         
 })
+
+
+function testa(a){
+	var spId=a;
+	 var tolprice=$("#pdpPrice_pc").text();
+	 tolprice=tolprice.replace("¥","");
+	 console.log(tolprice);
+	 var samount=1;
+       $("#btn-isBuyNow").click(function(data){
+    	   $.post("cart",{op:"addoneSp",spId:spId,usid:usid,tolprice:tolprice,samount:samount},function(data){
+    		   
+    		   
+    		   
+    	   })
+    	  location.href='buy.html';
+       }) 
+}
+
+
+$("#addToShoppingCart").click(function(data){
+	var samount=1;
+	  $.post("cart",{op:"addcar",usid:usid,spId:spId,samount:samount},function(data){
+		  
+	  })
+	  
+	  alert("添加成功");
+})
  
+
+function carta(){
+	location.href='shoppingCart.html';
+	
+}

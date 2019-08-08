@@ -28,11 +28,20 @@ public class Spingservlet extends BasicServlet {
 			  findSingle(request,response);
 		 }else if("favorite".equals(op)){
 			   findfavorite(request,response);
+		 }else if("buySp".equals(op)){
+			 findbuySp(request,response);
 		 }
 		 
 	}
 	
 	
+	private void findbuySp(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		 String spId=request.getParameter("spId");
+		 ISpingBiz  spingBiz=new  SpingBizImpl();
+		 this.send(response, spingBiz.findSingle(spId));
+	} 
+
+
 	private void findfavorite(HttpServletRequest request, HttpServletResponse response) throws IOException {
                String spcateL=request.getParameter("spcateL");
                String spIdL=request.getParameter("spIdL");

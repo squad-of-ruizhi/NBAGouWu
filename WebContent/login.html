@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NBAStore</title>
+<link rel="stylesheet" href="css/login.css" />
+<link rel="stylesheet" href="css/verify.css" />
+<link rel="stylesheet" href="css/index.css" />
+<link rel="short icon" href="images/NBAlogo.jpg"  />
+</head>
+
+<body>
+
+	<!-- 头部 -->
+	<header id="top-header">
+		<div class="ul_01">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">我的账户</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;0</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
+			</ul>
+		</div>
+    	<img src="images/logo_cn.png" width="218" height="58" alt=""/>
+		<input type="text" id="search" />
+		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
+	</header>
+
+	<!-- 导航 -->
+    <nav>
+        <ul id="padCheck">
+          	<li>
+			  	<a href="#">选择球队</a>
+		  	</li>
+          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
+          	<li>
+				<a href="#">品牌</a>
+			</li>
+          	<li>
+				<a href="#">所有商品</a>
+			</li>
+          	<li>
+				<a href="#">球衣</a>
+			</li>
+          	<li>
+				<a href="#">上衣</a>
+			</li>
+          	<li>
+				<a href="#">下装</a>
+			</li>
+          	<li>
+				<a href="#">女子</a>
+			</li>
+          	<li>
+				<a href="#">儿童/青少年</a>
+			</li>
+          	<li>
+				<a href="#">鞋类</a>
+			</li>
+          	<li>
+				<a href="#">篮球</a>
+			</li>
+          	<li>
+				<a href="#">配件</a>
+			</li>
+      </ul>
+    </nav>
+	<!--中部区域-->
+	<div class="content-middle" style="padding-left:50px; height: 500px ; align-self: center; width: 95%">
+		<div class="ci-top">
+			<span>欢迎登录NBA Store</span>
+
+		</div>
+		<div class="ci-left">
+			<span>已注册用户</span>
+			<p style="margin-top:10px">已拥有NBA球迷圈账号，请使用手机号码登录。</p>
+			<div class=​"form-group">​
+				<form>
+				<div class=​"control-label">​
+					<span>​NBA账号</span>​
+					<input type="text" id="loginName" maxlength="100" placeholder="手机号码">
+				</div>​
+
+				<div class=​"control-label2">​
+					<span>​密码​</span>​
+					<input type="password" id="loginPwd" maxlength="100" > ​
+				</div>​
+				<div>
+
+					<button type="button" value="登录" id="login" class="btn-primary">登录</button>
+				</div>
+				</form>
+			</div>​
+
+		</div>
+		<div class="ci-right">
+			<span>新用户注册(创建NBA球迷圈账号)</span>
+			<div class=​"form-group2">​
+				<div>​
+					<span>​*手机号码</span>​
+					<input type="text" id="RegisterName" maxlength="100">
+				</div>​
+
+				<!--HTML验证码-->
+				<div>
+					<table border="0" cellspacing="0" cellpadding="0" style="margin: 15px">
+						<tr>
+							<td>验证码：</td>
+							<td><input type="text" id="inputCode" style="display: inline-block" /></td>
+							<td> <div id="checkCode" class="code"  onclick="createCode(4)" ></div></td>
+							<td> <span  id="varify-span" onclick="createCode(4)" >看不清换一张</span></td>
+						</tr>
+					</table>
+				</div>
+
+				<div>​
+					<span>​手机验证码</span>​
+					<input type="text" id="PhoneVerify" maxlength="100">
+					<input type="button" id="GetVerifyCode" value="获取验证码"  width="80px">
+				</div>​
+				<div>​
+					<span>​*密码​</span>​
+					<input type="password" id="RegisterPwd" maxlength="100">
+				</div>​
+				<div>​
+					<span>确认密码</span>
+					<input type="password" maxlength="100" id="RegisterPwdconf" >
+				</div>​
+				<div>
+					<input type="button" value="立即注册" onclick="validateCode()" id="register" class="btn-primary">
+				</div>
+			</div>​
+		</div>
+		</div>
+	<!-- 脚部 -->
+	<div id="foot">
+        <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
+		<div id="foot_div2">
+			<ul>
+				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#">说出你想要的</a></li>
+				<li><a href="#">门店位置</a></li>
+				<li><a href="#">帮助</a></li>
+			</ul>
+		</div>
+		<div id="foot_div3">
+			<p id="p1">联系我们</p>
+			<div id="p2">
+				<ul>
+					<li>
+						<i class="fa fa-envelope-o fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">service@nbastore.cn</a>
+					</li>
+					<li>
+						<i class="fa fa-phone fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">400-0066-802（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-comments fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">在线客服（9:00 – 22:00）</a>
+					</li>
+					<li>
+						<i class="fa fa-weibo fa-inverse"></i>&nbsp;&nbsp;
+						<a href="#">NBASTORE官方微博</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="footline"></div>
+	  <div id="foot_content">
+			<p id="f_c1">沪ICP备 14013659-2号
+				<a href="#">使用条款</a>
+				<a>|</a>
+				<a href="#">隐私政策</a>
+				<a>|</a>
+				<a href="#">退换货政策</a>
+			</p>
+		  <p id="f_c2"><a href="#">
+			  </a>
+		  </p>
+
+		</div>
+</div>
+
+	<!--<input type="text" value="qwe" id="qq" > -->
+
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+	<script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/verify.js"></script>
+
+	<script>
+
+		$("#login").click(function(){
+			//console.log(document.getElementById("qq").value = 123456);
+
+
+			//var username = $("#loginName").val();
+			var username = document.getElementById("loginName").value;
+			console.log(username);
+			var password = document.getElementById("loginPwd").value;
+			console.log(password);
+			if (username === "" || password === "") {
+				alert("您输入的信息不完整，请确认后重新输入...");
+				return false;
+			}
+			$.post("login", {op:"login", username:username, password:password}, function(data){
+				console.log(data)
+				if(data!=null){
+					alert("登录成功");
+					
+					location.href='index.html';              /* #'+data.usid+' */
+					sessionStorage.setItem("usid", data.usid);
+				}else{
+					alert("账号或密码错误");
+				}
+			},"json")
+		});
+
+		$("#GetVerifyCode").click(function () {
+			var phone = $.trim($("#RegisterName").val());
+			var verify = $.trim($("#PhoneVerify").val());
+			console.log(phone);
+			if (phone===""){
+				alert("请输入完整信息")
+			}else{
+				$.post("getMessageServlets", {op:"sendCode", phone:phone},function (code) {
+					if (code !== verify){
+						alert("手机验证码错误")
+					}else{
+						location.reload();
+					}
+				},"text");
+			}
+
+		});
+
+		$("#register").click(function () {
+			var tel = $.trim($("#RegisterName").val());
+			var registerPwd = $.trim($("#RegisterPwd").val());
+			var registerPwdCof = $.trim($("#RegisterPwdconf").val());
+
+			if (tel === "" || registerPwd === ""){
+				alert("请输入完整信息")
+			}
+
+			else if (registerPwd !== registerPwdCof){
+				alert("两次密码输入不一致，请确认后重新输入");
+				location.reload();
+			}else{
+				$.post("login", {op:"register", tel:tel,password:registerPwd},function (data) {
+					data = parseInt($.trim(data));
+					console.log(data);
+					if (data > 0) {
+						alert("注册成功，请登录");
+						location.reload();
+					} else {
+						alert("注册失败，请确认后重新输入...");
+					}
+				}, "text");
+			}
+		});
+
+		
+		$("#GetVerifyCode").click(function () {
+			$(this).addClass("on");
+			var time = 59;
+			$(this).attr("disabled", true);
+			var timer = setInterval(function () {
+				if (time == 0){
+					clearInterval(timer);
+					$("#GetVerifyCode").attr("disabled", false);
+					$("#GetVerifyCode").val("获取验证码");
+					$("#GetVerifyCode").removeClass("on");
+				}else {
+					$('#GetVerifyCode').val(time+"秒");
+					time--;
+				}
+			},1000);
+		});
+	</script>
+</body>
+</html>

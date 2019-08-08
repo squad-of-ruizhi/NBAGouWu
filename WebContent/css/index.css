@@ -355,8 +355,9 @@ nav #padCheck a:hover{
 }
 .hmlc img{
 	float: left;
-	margin-left: -30px;
+	margin-left:0;
 	margin-top: 0;
+	position:inherit;
 }
 .hmlc_com{
 	width: 175px;
@@ -366,6 +367,7 @@ nav #padCheck a:hover{
 }
 .hmlc_com p{
 	font-size: 12px;
+	margin-top:-60px;
 }
 .hmlc_com .hmlcc_2{
 	margin-top: 10px;
