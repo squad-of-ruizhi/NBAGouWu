@@ -20,4 +20,10 @@ public class DingDanImpl implements IDingDanBiz {
 		IDingDanDao dao=new  DingDanDaoImpl();
 		return dao.deleteord(orderid);
 	}
+	
+	@Override
+	public int Ddstatus(String orderid) {
+		IDingDanDao dao=new  DingDanDaoImpl();
+		return dao.Ddstatus(orderid);
+	}
 }

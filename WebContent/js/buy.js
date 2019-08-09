@@ -10,7 +10,8 @@ var spid=location.hash;
 spId=spid.replace("#"," ")
 $("#pdp-ids").html(spId);
 var usid = sessionStorage.getItem("usid");
-console.log(usid);
+var tel = sessionStorage.getItem("tel");
+$("#aaa").html(tel);
 var tolpricea=0;
 var spnumber=0;
 
@@ -32,7 +33,7 @@ $(function(){
 					str+='</div>';
 					str+='<p class="dtl-box-pic">';
 					str+='<span>&nbsp&nbsp&nbsp¥'+item.spprice+'.00</span>'	;
-					str+='<p class="oneSp" style="margin-left:150px;color:#00559a;" >单件商品总价:&nbsp&nbsp&nbsp¥'+item.tolprice+'.00</p>';
+					str+='<p class="oneSp" style="margin-left:150px;color:#00559a;" >单件商品总价:&nbsp&nbsp&nbsp¥'+item.tolprice+'</p>';
 					str+='</p>'
 				    str+='</li>';
 					

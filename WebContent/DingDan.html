@@ -15,7 +15,7 @@
         <header>
 		<div class="ul_01">
 			<ul>
-				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#" id="aaa">登陆/注册</a></li>
 				<li><a href="#">|</a></li>
 				<li><a href="#">我的账户</a></li>
 				<li><a href="#">|</a></li>
@@ -83,7 +83,7 @@
 			<ul>
 				<li><p class="WDD" onclick="WDD()">我的订单</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 				<li><p class="WDZ" onclick="WDZ()">地址薄</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
-		          <li><p>历史记录</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+		          <li><p class="personhisa" onclick="personhisa()">历史记录</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 			     <li><p class="personedit" onclick="personedit()">个人信息管理</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 			<!--  <li><p>限量商品</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 				<li><p>鞋子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
@@ -251,51 +251,74 @@
 	</div> -->
 	
 	<div id="right_GRXX">
-		<h1 style="margin-left:520px;font-size:20px;">个人信息</h1>
-	 	<div id="alterpwd">
-			请输入原密码：<input type="password" id="origpwd" /><br>
-			请输入新密码：<input type="password" id="newpwd" /><br>
-			请确认新密码：<input type="password" id="newpwd2"/>
+		<h1 style="margin-left: 520px; font-size: 20px;">个人信息</h1>
+		<div id="alterpwd">
+			请输入原密码：<input type="password" id="origpwd" readonly="readonly" style="border:none" value="******" /><br> 
+			请输入新密码：<input type="password" id="newpwd" readonly="readonly" /><br>
+			 请确认新密码：<input type="password" id="newpwd2" readonly="readonly"  /><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <input type="checkbox" id="need" />是否需要更改密码
 		</div>
-		<div style="width: 600px; height: 1px; background-color: #ccc; margin-top: 20px;"></div>
+		<div
+			style="width: 600px; height: 1px; background-color: #ccc; margin-top: 20px;"></div>
 		<div id="userinfo">
 			<table>
 				<tr>
 					<td>邮箱</td>
-					<td><input type="email" id="mail" ></td>
+					<td><input type="email" id="mail" readonly="readonly" style="border:none"></td>
 				</tr>
 				<tr>
 					<td>生日</td>
-					<td><input type="date" id="birthday" /></td>
+					<td>
+						<input type="date" id="birthday" style="display:none" />
+						<input type="text" id="birthday1" readonly style="border:none" />
+					</td>
 				</tr>
 				<tr>
 					<td>性别</td>
-					<td><select id="sex">
+					<td>
+						<select id="sex" style="display:none">
 							<option value="请选择">请选择</option>
-							<option value="0">男</option>
-							<option value="1">女</option>
-						</select></td>
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+						<input id="sex1" style="border:none; display:block" readonly="readonly" />
+					</td>
 				</tr>
 				<tr>
 					<td>喜欢NBA多久</td>
-					<td><input type="text" id="duration" />&nbsp;年</td>
+					<td><input id="howlong" type="text" id="duration" readonly="readonly" style="border:none"  />&nbsp;年</td>
 				</tr>
 				<tr>
 					<td>喜欢的球队</td>
-					<td id="like_team"><div id="team" align="center" onClick="openWin()">+</div></td>
+					<td id="like_team">
+						<div id="team2" style="width:200px; height:auto;"></div>
+						<div id="team" align="center" onClick="openWin()" style="display:none">+</div>
+						<p id="team1"></p>
+					</td>
 				</tr>
 				<tr>
 					<td>喜欢的球员</td>
-					<td id="like_star"><div id="star" align="center" onClick="openWin2()">+</div></td>
+					<td id="like_star">
+						<div id="star2" style="width:200px; height:auto;"></div>
+						<div id="star" align="center" onClick="openWin2()" style="display:none">+</div>
+						<p id="star1"></p>
+					</td>
 				</tr>
 			</table>
 		</div>
-		<div id="affirmbtn">
-			<input type="button" value="保存" id="affbtn_1" />
-			<input type="button" value="跳过" id="affbtn_2" />
+		<div id="affirmbtn1">
+			<input type="button" value="修改" id="affbtn_3" onclick="alter()" />
 		</div>
-	 </div>
-	 
+		<div id="affirmbtn" style="display: none">
+			<input type="button" value="保存" id="affbtn_1" onclick="getUserInfo()" /> 
+			<input type="button" value="跳过" id="affbtn_2" onclick="skip()" />
+		</div>
+	</div>
 	 
 	 <div id="selectTeam">
 		<i class="fa fa-window-close fa-2x" style="margin-top: -3px; float: right; color: red; cursor: pointer" onClick="closeWin()" ></i>
@@ -364,6 +387,19 @@
         	<input type="button" value="确认" id="ss_confrm" onClick="getStar()" />
   		</div>
 	</div>
+	 
+	 <div class="personhis">
+	       <p style="font-size:22px;margin-left:20px;padding-top:25px;">购买历史记录</p>
+	       
+	       <div id="history">
+	      <!--  <div class="liebiao" >
+		    	 <a href="buy.html"><img src="images/com_1.jpg" width="150" height="150"  alt=""/></a>
+				<h2>NBA 斯伯丁 Spalding<br />篮球&nbsp&nbsp&nbsp3件</h2>
+				<p><span>¥399.00</span></p> 
+			</div> -->
+			</div>
+			
+	 </div>
 	 
 
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
@@ -512,6 +548,125 @@
 					}
 				});
 				$("#selectStar").css("display","none");
+			}
+			
+			
+			function alter() {
+				$("#affirmbtn1").css("display","none");
+				$("#affirmbtn").css("display","block");
+				
+				$("#origpwd").css({"border":"1px #ccc solid", "borderRadius":"3px"});
+				$("#origpwd").attr("readonly",false);
+				$("#origpwd").val("");
+				
+				$("#newpwd").attr("readonly",false);
+				$("#newpwd").val("");
+				$("#newpwd2").attr("readonly",false);
+				$("#newpwd2").val("");
+				
+				$("#sex").css("display","block");
+				$("#sex1").css("display","none");
+				
+				$("#howlong").css({"border":"1px #ccc solid", "borderRadius":"3px", "width":"35px", "height":"35px"});
+				$("#howlong").attr("readonly",false);
+				$("#howlong").val("");
+				
+				$("#mail").css({"border":"1px #ccc solid", "borderRadius":"3px"});
+				$("#mail").attr("readonly",false);
+				$("#mail").val("");
+				
+				$("#birthday").css("display","block");
+				$("#birthday1").css("display","none");
+				
+				$("#team").css("display","block");
+				$("#team1").css("display","none");
+				
+				$("#star").css("display","block");
+				$("#star1").css("display","none");
+				
+				$("#star2").css("display","block");
+				$("#team2").css("display","block");
+			}
+			
+			function skip() {
+				
+				$("#affirmbtn1").css("display","block");
+				$("#affirmbtn").css("display","none");
+				// $("#affirmbtn").val("");
+				
+				$("#origpwd").css({"border":"none"});
+				$("#origpwd").attr("readonly",true);
+				$("#origpwd").val("******");
+				
+				$("#newpwd").attr("readonly",true);
+				$("#newpwd").val("");
+				$("#newpwd2").val("");
+				$("#newpwd2").attr("readonly",true);
+				
+				$("#sex").css("display","none");
+				$("#sex1").css("display","block");
+				
+				$("#howlong").css({"border":"none"});
+				$("#howlong").attr("readonly",true);
+				// $("#howlong").val("");
+				
+				$("#mail").css({"border":"none"});
+				$("#mail").attr("readonly",true);
+				// $("#mail").val("");
+				
+				$("#birthday").css("display","none");
+				$("#birthday1").css("display","block");
+				
+				$("#team").css("display","none");
+				$("#team2").css("display","block");
+				
+				$("#star").css("display","none");
+				$("#star2").css("display","block");
+				
+				grxx();
+			}
+			
+			function getUserInfo() {
+				var usid = sessionStorage.getItem("usid"); // 用户编号
+				var mail = $("#mail").val(); // 邮箱
+				var sex = $("#sex").val(); // 性别
+				var birthday = $("#birthday").val(); // 生日
+				var duration = $("#howlong").val(); // 喜欢NBA多久
+				var team = $("#team2").html(); // 喜欢的球队
+				var star = $("#star2").html(); // 喜欢的球星
+				
+				var origpwd = $("#origpwd").val(); // 原密码
+				var newpwd = $("#newpwd").val(); // 新密码
+				var newpwd2 = $("#newpwd2").val(); // 新密码2
+				
+				if($("#need").prop("checked")) {
+					if(newpwd != newpwd2) {
+						alert("您前后两次密码输入不一致，请重新输入！");
+					} else {
+						$.post("DingDan",{op:"alterInfoPwd",usid:usid,mail:mail,sex:sex,
+							birthday:birthday, duration:duration, team:team, star:star, origpwd:origpwd, newpwd:newpwd});
+					}
+				} else {
+					$.post("DingDan",{op:"alterInfo",usid:usid,mail:mail,sex:sex, birthday:birthday, duration:duration,
+						team:team, star:star});
+				}
+				skip();
+			}
+			
+			// 个人信息
+			function grxx() {
+				$.post("DingDan",{op:"findAll", usid:sessionStorage.getItem("usid")}, function(data,status) {
+					$.each(JSON.parse(data), function(index,item) {
+						$("#mail").val(item.mail);
+						$("#birthday1").val(item.birthday);
+						$("#sex1").val(item.sex);
+						$("#howlong").val(item.duration);
+						$("#team2").empty();
+						$("#team2").append(item.team);
+						$("#star2").empty();
+						$("#star2").append(item.star);
+					});
+				});
 			}
 			</script>
 

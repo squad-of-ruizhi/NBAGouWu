@@ -533,7 +533,7 @@ nav #padCheck a:hover{
 		width: 500px;
 		height: 400px;
 	}
-	#mail, #birthday, #sex, #origpwd, #newpwd, #newpwd2{
+	#mail, #birthday, #sex, #origpwd, #newpwd, #newpwd2,#birthday1{
 		width: 220px;
 		height: 35px;
 		border: 1px #ccc solid;
@@ -556,17 +556,17 @@ nav #padCheck a:hover{
 		cursor: pointer;
 	}
 	
-	#affirmbtn{
+	#affirmbtn,#affirmbtn1{
 	   margin-left:500px;
 	}
 	
-	#affirmbtn input{
+	#affirmbtn input,#affirmbtn1 input{
 		width: 160px;
 		height: 38px;
 		border: 1px solid #00559A;
 		border-radius: 3px;
 	}
-	#affbtn_1{
+	#affbtn_1,#affbtn_3{
 		background-color: #00559A;
 		color: white;
 		font-size: 12px;
@@ -576,7 +576,7 @@ nav #padCheck a:hover{
 		color: #00559A;
 		font-size: 12px;
 	}
-	#affbtn_1:hover{
+	#affbtn_1:hover, #affbtn_3:hover{
 		background-color: #0073D1;
 		color: white;
 		font-size: 12px;
@@ -638,4 +638,29 @@ nav #padCheck a:hover{
 	display:none;
 	margin-top:-920px;
 	margin-left:-100px;
+}
+
+.personhis{
+	width:1100px;
+	height:800px;
+	margin-left:340px;
+	margin-top:-930px;
+	display:none;
+	
+}
+
+.liebiao{
+	margin-left:25px;
+	margin-top:35px;
+	display:inline-block;
+}
+
+.liebiao  p{
+	margin:15px;
+	font-size:17px;
+	color:red;
+}
+
+.liebiao a{
+	cursor: pointer;
 }

@@ -76,4 +76,19 @@ public class CartDaoImpl implements ICartDao {
 		String sql="insert into tempa(spId, usid, tolprice, samount) values (?,?,?,?)";
 		return db.update(sql, spId,usid,tolprice,samount);
 	}
+
+	@Override
+	public List<CartInfo> selhistory(String usid) {
+		DBHelper db=new DBHelper();
+		String sql="select t.spId,t.samount,t.tolprice,s.spname,s.sppic,s.spcate,t.tempaId  from  tempa t,sp s  where t.spId=s.spId and usid=? and status='1'";
+		return db.finds(CartInfo.class, sql, usid);
+	}
+
+	@Override
+	public int deletehis(String tempaId) {
+		DBHelper db=new DBHelper();
+		String sql="delete from tempa where tempaId=?";
+		return db.update(sql, tempaId);
+	}
+
 }

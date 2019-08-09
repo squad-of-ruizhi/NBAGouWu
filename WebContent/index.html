@@ -15,7 +15,7 @@
 	<header>
 		<div class="ul_01">
 			<ul>
-				<li><a href="#">登陆/注册</a></li>
+				<li><a href="#" id="aaa"><!-- 登陆/注册 --></a></li>
 				<li><a href="#">|</a></li>
 				<li><a href="DingDan.html">我的账户</a></li>
 				<li><a href="#">|</a></li>
@@ -174,18 +174,13 @@
 <div id="right">
 		 <div id="right_list">
 			 <select id="right_list_left">
-				<option>按新品</option>
-				<option>按热销</option>
-				<option>按价格</option>
-				<option>按价格</option>
-				<option>按价格</option> 
+				<option id="right_lis" value="a">按价格由低到高</option>
+				<option  id=" asw" value="b">按新品</option> 
 			</select> 
 		  <select id="right_list_right">
-				<option>每页10件商品</option>
-				<option>每页20件商品</option>
-				<option>每页30件商品</option>
-				<option>每页40件商品</option>
-				<option>每页50件商品</option>
+				<option value="10">每页10件商品</option>
+				<option  value="15">每页15件商品</option>
+				<option  value="20">每页20件商品</option>
 			</select>
 		</div>
 		 <div id="commodity"> 
@@ -195,6 +190,7 @@
 				<p><span>¥399.00</span></p> 
 			</div> -->    
 			 </div>  
+			 <div style="width:100%;margin-top:46px;text-align:center;"  id="pageInfo"></div> 
 		</div>
 	
 	<!-- 脚部 -->

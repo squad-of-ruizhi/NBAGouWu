@@ -4,25 +4,26 @@
 /*var usid=location.hash;
  usid=usid.replace("#","");*/
 var usid = sessionStorage.getItem("usid");
- 
+var tel = sessionStorage.getItem("tel");
+console.log(tel);
+$("#aaa").html(tel);
+var totalPage=0;
+var pageNo=1; 
+var pageSize=15;
 
 $(function(){
-	console.info(sessionStorage.getItem("usid"));
-	 $.post("Sping",{op:"findAll"},function(data){
-		 var str=" ";
-		   $.each(data,function(index,item){
-		    str+='<div class="commo">';
-		       str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
-		       str+='<h2>'+item.spname+'<br /> '+item.spcate+'</h2>';
-		       str+='<p><span>¥'+item.spprice+'.00</span></p>';
-		       str+='<a href="show.html#'+item.spcate+'"></a>';
-		       str+='</div>';
-			})
-			$("#commodity").html(str);
-	 },"json")
+	   $.post("Sping",{op:"findfirst",pageSize:pageSize,pageNo:pageNo},function(data){
+			var total=data.total;
+	    	totalPage=Math.ceil(total / pageSize);
+	    	createPage(totalPage);
+	    	show(data.rows);
+		   
+		},"json")
+	
+	
+	
 	 
 	 setInterval(function() {
-		 console.log(usid);
 			var atotalPrice = 0;
 			var aamount = 0;
 			$.post("cart",{op:"findAll",usid:usid},function(data,status){  /*************需要修改***************/
@@ -102,3 +103,90 @@ $("#padCheck li a").on("click",function(){
 	
 })
 
+$("#right_list_left").change(function() {
+	         var s = this.options[this.selectedIndex].value;
+	       if(s=='a'){
+	    	   var str=" ";
+	    	   $.post("Sping",{op:"pricepx"},function(data){
+	    		   $.each(data,function(index,item){
+	    		    str+='<div class="commo">';
+	    		       str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
+	    		       str+='<h2>'+item.spname+'<br /> '+item.spcate+'</h2>';
+	    		       str+='<p><span>¥'+item.spprice+'.00</span></p>';
+	    		       str+='<a href="show.html#'+item.spcate+'"></a>';
+	    		       str+='</div>';
+	    			})
+	    			$("#commodity").html(str);
+	    	 },"json")
+	       }else if(s=='b'){
+	    	   var str=" ";
+	    	   $.post("Sping",{op:"newpx"},function(data){
+	    		   $.each(data,function(index,item){
+	    		       str+='<div class="commo">';
+	    		       str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
+	    		       str+='<h2>'+item.spname+'<br /> '+item.spcate+'</h2>';
+	    		       str+='<p><span>¥'+item.spprice+'.00</span></p>';
+	    		       str+='<a href="show.html#'+item.spcate+'"></a>';
+	    		       str+='</div>';
+	    			})
+	    			$("#commodity").html(str);
+	    	 },"json")
+	       }
+	});
+
+
+$("#right_list_right").change(function(){
+	var pageSize = this.options[this.selectedIndex].value;
+	if(pageSize==10){
+			pageSize=pageSize;
+			 $.post("Sping",{op:"findfirst",pageSize:pageSize,pageNo:pageNo},function(data){
+					var total=data.total;
+			    	totalPage=Math.ceil(total / pageSize);
+			    	createPage(totalPage);
+			    	show(data.rows);
+				   
+				},"json") 
+	}else if(pageSize==20){
+		pageSize=pageSize;
+		$.post("Sping",{op:"findfirst",pageSize:pageSize,pageNo:pageNo},function(data){
+			var total=data.total;
+	    	totalPage=Math.ceil(total / pageSize);
+	    	createPage(totalPage);
+	    	show(data.rows);
+		   
+		},"json") 
+	}
+	
+})
+
+
+function createPage(total){
+	    var str=" ";
+	    for(var i=1;i<=total;i ++){
+	    	str +="<a href='javascript:void(0)'  onclick='findByPage("+i+")'>"+i+"<a>&nbsp;"
+	    }
+	    	$("#pageInfo").html(" ").append($(str));
+   }
+
+
+function show(data){
+	 var str=" ";
+	   $.each(data,function(index,item){
+	    str+='<div class="commo">';
+	       str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
+	       str+='<h2>'+item.spname+'<br /> '+item.spcate+'</h2>';
+	       str+='<p><span>¥'+item.spprice+'.00</span></p>';
+	       str+='<a href="show.html#'+item.spcate+'"></a>';
+	       str+='</div>';
+		$("#commodity").html(" ").append($(str));
+},"json")
+
+}
+
+function findByPage(no){
+	   $.post("Sping",{op:"findByPage",pageNo:no,pageSize:pageSize},function(data){
+		   show(data);
+	    		 
+	    },"json");
+}
+	   

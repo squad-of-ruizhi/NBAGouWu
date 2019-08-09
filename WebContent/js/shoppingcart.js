@@ -1,5 +1,7 @@
 var amount;
 var usida = sessionStorage.getItem("usid");
+var tel = sessionStorage.getItem("tel");
+$("#aaa").html(tel);
 
 $(function() {
 	$.post("cart",{op:"findAll",usid:usida},function(data,status){  

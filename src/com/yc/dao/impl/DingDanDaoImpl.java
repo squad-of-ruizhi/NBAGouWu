@@ -11,7 +11,7 @@ public class DingDanDaoImpl implements IDingDanDao {
 	@Override
 	public List<DingDan> findAll(String usid) {
 		 DBHelper db=new DBHelper();
-		 String sql="select orderid,odate,oamount,state,addr,usid from orders where usid=?";
+		 String sql="select orderid,odate,oamount,state,addr,usid,Dstatus from orders where usid=?";
 		return db.finds(DingDan.class, sql, usid);
 	}
 
@@ -19,6 +19,13 @@ public class DingDanDaoImpl implements IDingDanDao {
 	public int deleteord(String orderid) {
 		DBHelper db=new DBHelper();
 		 String sql="delete from orders where orderid=?";
+		return   db.update(sql, orderid);
+	}
+
+	@Override
+	public int Ddstatus(String orderid) {
+		DBHelper db=new DBHelper();
+		 String sql="update  orders  set Dstatus='1'  where orderid=?";
 		return   db.update(sql, orderid);
 	}
 

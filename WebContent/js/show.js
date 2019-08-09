@@ -16,6 +16,8 @@ var spid=location.hash;
 spId=spid.replace("#"," ")
 $("#pdp-ids").html(spId);
 var usid = sessionStorage.getItem("usid");
+var tel = sessionStorage.getItem("tel");
+$("#aaa").html(tel);
 
 
 $(function(){
@@ -56,7 +58,7 @@ function test(type,type1){
 			 var str="";
 			   $.each(data,function(index,item){
 				str+='<li style="margin-top:18px; height:340px;width:247px;float:left;">';
-				str+='<a class="thumbnail" href="index.html" product_id="'+item.spId+'">';	
+				str+='<a class="thumbnail" href="show.html#'+item.spId+'" product_id="'+item.spId+'">';	
 				str+='<img src="'+item.sppic+'" style="margin-top:27px;width:220px;width:224px;"></img>';		
 				str+='</a>';
 			    str+='<h2>'+item.spname+'</h2>';
