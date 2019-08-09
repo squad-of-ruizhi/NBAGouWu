@@ -13,6 +13,7 @@ $(function(){
 		   $.each(data,function(index,item){
 		    str+='<div class="commo">';
 		       str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
+
 		       str+='<h2>'+item.spname+'<br /> '+item.spcate+'</h2>';
 		       str+='<p><span>¥'+item.spprice+'.00</span></p>';
 		       str+='<a href="show.html#'+item.spcate+'"></a>';

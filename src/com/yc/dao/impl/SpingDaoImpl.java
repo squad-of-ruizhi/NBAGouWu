@@ -23,6 +23,7 @@ public class SpingDaoImpl implements ISpingDao {
 	 }
 
 
+
 	@Override
 	public Sping findSingle(String spId) {
 		DBHelper db=new DBHelper();
@@ -38,4 +39,5 @@ public class SpingDaoImpl implements ISpingDao {
 		 String sql="select  spId,spname,spprice,sppic,spsize,spcolor from  sp where   spcate= ? and  spid != ?  ";
 	     return  db.finds(Sping.class,sql,spcateL,spIdL);
 	}
+
 }

@@ -30,11 +30,13 @@ public class Spingservlet extends BasicServlet {
 			   findfavorite(request,response);
 		 }else if("buySp".equals(op)){
 			 findbuySp(request,response);
+
 		 }
 		 
 	}
 	
 	
+
 	private void findbuySp(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		 String spId=request.getParameter("spId");
 		 ISpingBiz  spingBiz=new  SpingBizImpl();
