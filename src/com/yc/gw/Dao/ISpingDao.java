@@ -11,4 +11,14 @@ public interface ISpingDao {
 	
 
 	public List<Sping> findcate(String spcate);
+
+
+
+
+	public Sping findSingle(String spId);
+
+
+
+	public List<Sping> findcateL(String spcateL,String spIdL);
+
 }

@@ -176,6 +176,17 @@ nav #padCheck a:hover{
 	
 }
 
+.dtl-pica{
+	display:block;
+	font-size:18px;
+	float:left;
+	width:42%;
+	color:white;
+	text-align:right;
+	padding:2px 0;
+	
+}
+
 .button{
 	width:100%;
 	border-radius:3px;
@@ -194,9 +205,14 @@ nav #padCheck a:hover{
 .jy{
 	border:1px  solid #949da9;
 	width:100%;
-	height:180px;
+	height:680px;
 	background-color:white;
 	margin-top:-7px;
+}
+
+.dtl-box{
+	height:160px;
+	width:380px;
 }
 
 .dtl-box-row  span{
@@ -219,7 +235,7 @@ nav #padCheck a:hover{
 	background-color: #0A3665;
 	width: 100%;
 	height: 400px;
-	margin-top: 30px;
+	margin-top: 540px;
 }
 #foot_div1{
 	width: 218px;
@@ -436,4 +452,9 @@ nav #padCheck a:hover{
 
 .js  button:hover{
 	cursor: pointer;
+}
+
+
+#fga{
+	display:none;
 }

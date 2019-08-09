@@ -24,11 +24,45 @@ public class Spingservlet extends BasicServlet {
 			 findAll(request,response);
 		 }else if("findcate".equals(op)){
 			 finadcate(request,response);
+		 }else if("findSingle".equals(op)){
+			  findSingle(request,response);
+		 }else if("favorite".equals(op)){
+			   findfavorite(request,response);
+		 }else if("buySp".equals(op)){
+			 findbuySp(request,response);
+
 		 }
 		 
 	}
 	
 	
+
+	private void findbuySp(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		 String spId=request.getParameter("spId");
+		 ISpingBiz  spingBiz=new  SpingBizImpl();
+		 this.send(response, spingBiz.findSingle(spId));
+	} 
+
+
+	private void findfavorite(HttpServletRequest request, HttpServletResponse response) throws IOException {
+               String spcateL=request.getParameter("spcateL");
+               String spIdL=request.getParameter("spIdL");
+               ISpingBiz  spingBiz=new  SpingBizImpl();
+          	   List<Sping>  list=spingBiz.findcateL(spcateL,spIdL);
+          	   this.send(response, list);
+	}
+
+
+	private void findSingle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		  String spId=request.getParameter("spId");
+		  ISpingBiz  spingBiz=new  SpingBizImpl();
+		 this.send(response, spingBiz.findSingle(spId));
+	}
+
+
+	
+
+
 	private void finadcate(HttpServletRequest request, HttpServletResponse response) throws IOException  {
     	String spcate=request.getParameter("spcate");
     	ISpingBiz  spingBiz=new  SpingBizImpl();

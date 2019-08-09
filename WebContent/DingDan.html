@@ -3,14 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="short icon" href="images/NBAlogo.jpg"  />
 <link rel="stylesheet" href="css/DingDan.css" />
-<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-
-
 <title>NBA  Store</title>
 </head>
 <body>
+		<input type="hidden" class="userwho" value="" />
+		<input type="hidden" class="default" value="" />
+		<input type="hidden" class="thisid" value="" />
         <header>
 		<div class="ul_01">
 			<ul>
@@ -83,7 +84,7 @@
 				<li><p class="WDD" onclick="WDD()">我的订单</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 				<li><p class="WDZ" onclick="WDZ()">地址薄</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 		          <li><p>历史记录</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
-			     <li><p>个人信息管理</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
+			     <li><p class="personedit" onclick="personedit()">个人信息管理</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 			<!--  <li><p>限量商品</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 				<li><p>鞋子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
 				<li><p>女子</p><a href="#"><img class="add" src="images/open.png" width="12px" height="12px" /></a></li>
@@ -129,24 +130,26 @@
 								<tr>
 									<th><span>订单编号.</span></th>
 									<th>订单日期</th>
-									<th>数量&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+									<th>&nbsp&nbsp&nbsp数量&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+									<th>地址</th>
 									<th>订单总计</th>
 									<th>订单状态</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="dingD">
 							<!-- 循环 start-->
-								<tr>
-								  	<td><a href="/myaccount/orderDetailByOrderNo.htm?code=NBACN200685">NBACN200685</a></td>
+								<!-- <tr id="dingD"> -->
+								  	<!-- <td><a href="/myaccount/orderDetailByOrderNo.htm?code=NBACN200685">NBACN200685</a></td>
 								  	<td>25/07/2019 10:09:18</td>
 								  	<td>1</td>
+								  	<td>湖南省  衡阳市 蒸湘区 南华大学</td>
 								  	<td>¥369.00</td>
 								  	<td>
 								  				<span class="font-blue">等待付款</span>
 								  				<a class="btn-red" ok_socode="NBACN200685" ok_paymenttype="4">
 								  						立即支付</a>
-								  			</td>
-								  		</tr>
+								  			</td> -->
+								  		<!-- </tr> -->
 								<!-- 循环 end-->
 							</tbody>
 					    </table>
@@ -158,11 +161,12 @@
 						<h2>我的地址簿</h2>
 	 </div>
 	   <div class="my-address-btn">
-		<button class="btnevents-addAddressBtn">添加新的收货地址</button>
+		<button class="btnevents-addAddressBtn" id="btnevents-addAddressBtn">添加新的收货地址</button>
 		</div>
 		
-		<div class="default-address">
-		 <p class="edit-name">
+		<div id="Dzc">
+		<!-- <div class="default-address" id="default-address">
+	       <p class="edit-name">
 		   杨风雨<span class="AAA">默认地址</span></p>
 			<p style="margin-left:35px;padding-top:7px;">+86 15575522311</p>
 			<p style="margin-left:35px;padding-top:7px;">597550427@qq.com</p>
@@ -175,11 +179,198 @@
 			<div class="Set-default"  style="display: inline;">
 			<span class="HHH">设为默认</span>
 		</div>
+		</div>  -->
+		</div>
+	 </div>
+
+
+	<div class="addDZa" id="addDZa">
+		<p class="addadress">添加地址</p>
+		<div class="form" id="form">
+			<p style="font-size: 18px;">收货人姓名:</p>
+			<input type="text" name="uname" id="uname"
+				placeholder="&nbsp&nbsp请输入收货人姓名" class="input"></input></br>
+			<p
+				style="width: 280px; height: 70px; margin-left: -280px; font-size: 18px;">手机号码:</p>
+			<input type="text" name="tel" id="tel"
+				placeholder="&nbsp&nbsp请输入手机号码" class="input"></input>
+			<p
+				style="width: 280px; height: 70px; margin-left: -280px; margin-top: 70px; font-size: 18px;">邮箱:</p>
+			<input type="text" name="YXiang" id="YXiang"
+				placeholder="&nbsp&nbsp请输入收货人邮箱" class="input"></input></br>
+			<p
+				style="width: 140px; height: 70px; margin-left: -280px; margin-top: 30px; font-size: 18px;">收货人区域:</p>
+			<select id="province" style="width: 200px; margin-left: -115px;"></select><select
+				id="city" style="width: 200px;"></select><select id="area"></select>
+				</br>
+			<p
+				style="width: 280px; height: 70px; margin-left: -142px; margin-top: 30px; font-size: 18px;">地址:</p>
+			<input type="text" name="DZ" id="DZ"
+				placeholder="&nbsp&nbsp请输入您居住的详细地址" class="input"
+				style="margin-top: 18px;"></input>
+			<div class="btn1a">
+				<p
+					style="font-size: 17px; color: white; text-align: center; margin-left: -67px; margin-top: 6px;"
+					onclick="addAddress()" class="userthis">使用该地址</p>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <div class="addDZab" id="addDZab">
+		<p>编辑地址</p>
+		<div class="forma" id="forma">
+			<p style="font-size: 18px;">收货人姓名:</p>
+			<input type="text" name="uname" id="unamea"
+				placeholder="&nbsp&nbsp请输入收货人姓名" class="input"></input></br>
+			<p
+				style="width: 280px; height: 70px; margin-left: -280px; font-size: 18px;">手机号码:</p>
+			<input type="text" name="tel" id="tela"
+				placeholder="&nbsp&nbsp请输入手机号码" class="input"></input>
+			<p
+				style="width: 280px; height: 70px; margin-left: -280px; margin-top: 70px; font-size: 18px;">邮箱:</p>
+			<input type="text" name="YXiang" id="YXianga"
+				placeholder="&nbsp&nbsp请输入收货人邮箱" class="input"></input></br>
+			<p
+				style="width: 140px; height: 70px; margin-left: -280px; margin-top: 30px; font-size: 18px;">收货人区域:</p>
+			
+			<select id="province" style="width: 200px; margin-left: -115px;"></select>
+			<select id="city" style="width: 200px;"></select>
+			<select id="area"></select>
+			</br><p
+				style="width: 280px; height: 70px; margin-left: -142px; margin-top: 30px; font-size: 18px;">地址:</p>
+			<input type="text" name="DZ" id="DZa"
+				placeholder="&nbsp&nbsp请输入您居住的详细地址" class="input"
+				style="margin-top: 18px;"></input>
+			<div class="btn1">
+				<p
+					style="font-size: 17px; color: white; text-align: center; margin-left: -67px; margin-top: 6px;"
+					onclick="addAddressa()">确定修改</p>
+			</div>
+		</div>
+	</div> -->
+	
+	<div id="right_GRXX">
+		<h1 style="margin-left:520px;font-size:20px;">个人信息</h1>
+	 	<div id="alterpwd">
+			请输入原密码：<input type="password" id="origpwd" /><br>
+			请输入新密码：<input type="password" id="newpwd" /><br>
+			请确认新密码：<input type="password" id="newpwd2"/>
+		</div>
+		<div style="width: 600px; height: 1px; background-color: #ccc; margin-top: 20px;"></div>
+		<div id="userinfo">
+			<table>
+				<tr>
+					<td>邮箱</td>
+					<td><input type="email" id="mail" ></td>
+				</tr>
+				<tr>
+					<td>生日</td>
+					<td><input type="date" id="birthday" /></td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td><select id="sex">
+							<option value="请选择">请选择</option>
+							<option value="0">男</option>
+							<option value="1">女</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td>喜欢NBA多久</td>
+					<td><input type="text" id="duration" />&nbsp;年</td>
+				</tr>
+				<tr>
+					<td>喜欢的球队</td>
+					<td id="like_team"><div id="team" align="center" onClick="openWin()">+</div></td>
+				</tr>
+				<tr>
+					<td>喜欢的球员</td>
+					<td id="like_star"><div id="star" align="center" onClick="openWin2()">+</div></td>
+				</tr>
+			</table>
+		</div>
+		<div id="affirmbtn">
+			<input type="button" value="保存" id="affbtn_1" />
+			<input type="button" value="跳过" id="affbtn_2" />
 		</div>
 	 </div>
 	 
+	 
+	 <div id="selectTeam">
+		<i class="fa fa-window-close fa-2x" style="margin-top: -3px; float: right; color: red; cursor: pointer" onClick="closeWin()" ></i>
+		<div id="st_1" align="center">
+			<h4>选择你喜欢的球队</h4>
+		</div>
+		<ul>
+			<li id="eastteam">
+				<h5 align="center">东部球队</h5>
+				<p><input type="checkbox" value="迈阿密 热火" /> 迈阿密 热火</p>
+				<p><input type="checkbox" value="亚特兰大 老鹰" /> 亚特兰大 老鹰</p>
+				<p><input type="checkbox" value="华盛顿 奇才" /> 华盛顿 奇才</p>
+				<p><input type="checkbox" value="夏洛特 黄蜂" /> 夏洛特 黄蜂</p>
+				<p><input type="checkbox" value="底特律 活塞" /> 底特律 活塞</p>
+				<p><input type="checkbox" value="奥兰多 魔术" /> 奥兰多 魔术</p>
+				<p><input type="checkbox" value="印第安那 步行者" /> 印第安那 步行者</p>
+				<p><input type="checkbox" value="克里夫兰 骑士" /> 克里夫兰 骑士</p>
+				<p><input type="checkbox" value="芝加哥 公牛" /> 芝加哥 公牛</p>
+				<p><input type="checkbox" value="密尔沃基 雄鹿" /> 密尔沃基 雄鹿</p>
+				<p><input type="checkbox" value="波士顿 凯尔特人" /> 波士顿 凯尔特人</p>
+				<p><input type="checkbox" value="费城 76人" /> 费城 76人</p>
+				<p><input type="checkbox" value="纽约 尼克斯" /> 纽约 尼克斯</p>
+				<p><input type="checkbox" value="布鲁克林 篮网" /> 布鲁克林 篮网</p>
+				<p><input type="checkbox" value="多伦多 猛龙" /> 多伦多 猛龙</p>
+			</li>
+			<li id="westteam">
+				<h5 align="center">西部球队</h5>
+				<p><input type="checkbox" value="圣安东尼奥 马刺" /> 圣安东尼奥 马刺</p>
+				<p><input type="checkbox" value="孟菲斯 灰熊" /> 孟菲斯 灰熊</p>
+				<p><input type="checkbox" value="达拉斯 小牛" /> 达拉斯 小牛</p>
+				<p><input type="checkbox" value="休斯顿 火箭" /> 休斯顿 火箭</p>
+				<p><input type="checkbox" value="新奥良 鹈鹕" /> 新奥良 鹈鹕</p>
+				<p><input type="checkbox" value="明尼苏达 森林狼" /> 明尼苏达 森林狼</p>
+				<p><input type="checkbox" value="丹佛 掘金" /> 丹佛 掘金</p>
+				<p><input type="checkbox" value="犹他 爵士" /> 犹他 爵士</p>
+				<p><input type="checkbox" value="波特兰 开拓者" /> 波特兰 开拓者</p>
+				<p><input type="checkbox" value="奥克拉荷马城 雷霆" /> 奥克拉荷马城 雷霆</p>
+				<p><input type="checkbox" value="萨克拉门托 国王" /> 萨克拉门托 国王</p>
+				<p><input type="checkbox" value="菲尼克斯 太阳" /> 菲尼克斯 太阳</p>
+				<p><input type="checkbox" value="洛杉矶 湖人" /> 洛杉矶 湖人</p>
+				<p><input type="checkbox" value="洛杉矶 快船" /> 洛杉矶 快船</p>
+				<p><input type="checkbox" value="金州 勇士" /> 金州 勇士</p>
+			</li> 
+		</ul>
+    	<div align="center">
+        	<input type="button" value="确认" id="st_confrm" onClick="getTeam()" />
+  		</div>
+	</div>
+	
+	<div id="selectStar" style="height: 500px">
+		<i class="fa fa-window-close fa-2x" style="margin-top: -3px; float: right; color: red; cursor: pointer" onClick="closeWin()" ></i>
+		<div id="ss_1" align="center">
+			<h4>选择你喜欢的球员</h4>
+		</div>
+		<ul>
+			<li><p><input type="checkbox" value="Stephen Curry" /> Stephen Curry</p></li>
+			<li><p><input type="checkbox" value="LeBron James" /> LeBron James</p></li>
+			<li><p><input type="checkbox" value="Kobe Bryant" /> Kobe Bryant</p></li>
+			<li><p><input type="checkbox" value="Kevin Durant" /> Kevin Durant</p></li>
+			<li><p><input type="checkbox" value="Chris Paul" /> Chris Paul</p></li>
+			<li><p><input type="checkbox" value="James Harden" /> James Harden</p></li>
+			<li><p><input type="checkbox" value="Derrick Rose" /> Derrick Rose</p></li>
+			<li><p><input type="checkbox" value="Dwyane Wade" /> Dwyane Wade</p></li>
+		</ul>
+    	<div align="center">
+        	<input type="button" value="确认" id="ss_confrm" onClick="getStar()" />
+  		</div>
+	</div>
+	 
+
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	 <script src="js/DingDan.js"></script>
 	 <script>
-		function WDD(){
+	 
+		/* function WDD(){
 		    	  $("#myaccount_content_").css("display","none");
 		    	  $("#table-myaccount").css("display","block");
 		    	  $("#right").css("display","block");
@@ -191,11 +382,138 @@
 			  $("#right").css("display","none");
 			  $("#right_DZ").css("display","block");
 		 }
-		 
+		
 		 $(".HHH").click( function(){
 			$(this).hide(); 
 			 $(".AAA").css("display","block");
-			}); 
-		</script>
+			});  */
+			
+			window.onload = function() {
+				var provinceObj	= document.getElementById("province");
+				var cityObj	= document.getElementById("city");
+				var areaObj	= document.getElementById("area"); 
+				
+				/* var provinceObj	= $(".province").val();
+				var cityObj	= $(".city").val();
+				var areaObj	= $(".area").val(); */
+				
+				var xmlhttp;
+				if (window.XMLHttpRequest) {
+					xmlhttp= new XMLHttpRequest();
+				} else {
+					xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");	
+				}
+				var dom;
+				var cities;
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						dom = xmlhttp.responseXML;
+						console.info(dom);
+						
+						// 先获取所有的省份
+						var pros = dom.getElementsByTagName("province");
+						// 循环所有的省份，添加到省份下拉列表中
+						for (var i = 0, len = pros.length; i < len; i++) {
+							addOption(pros[i], provinceObj);
+						}
+						
+						
+						provinceObj.onchange = function() {
+							// 取到用户选择的省份
+							var flag = provinceObj.value;
+							cityObj.length = 0;
+							
+							for (var i = 0, len = pros.length; i < len; i++) {
+								if(pros[i].nodeType==1 && pros[i].getAttribute("name")==flag){
+									// 获取这个省份下面的所有城市
+									cities = pros[i].getElementsByTagName("city");
+									
+									for(var j = 0,len1 = cities.length; j < len1; j++){
+										addOption(cities[j], cityObj);
+									}
+									cityObj.onchange();
+									break;
+								}
+							}
+						}
+						
+						
+						provinceObj.onchange();
+						cityObj.onchange();
+					}
+				}
+				
+				xmlhttp.open("GET","city.xml",true); // 同步 false 异步
+				xmlhttp.send();
+				var areas;
+						cityObj.onchange = function() {
+							// 取到用户选择的省份
+							var flag = cityObj.value;
+							areaObj.length = 0;
+							
+							for (var i = 0, len = cities.length; i < len; i++) {
+								if(cities[i].nodeType==1 && cities[i].getAttribute("name")==flag){
+									// 获取这个省份下面的所有城市
+									areas = cities[i].getElementsByTagName("area");
+									
+									for(var j = 0,len1 = areas.length; j < len1; j++){
+										addOption(areas[j], areaObj);
+									}
+									break;
+								}
+							}
+						}
+			}
+
+			function addOption(node, obj) {
+				if (node.nodeType == 1) {
+					var opt = document.createElement("option");
+					opt.setAttribute("value", node.getAttribute("name"));
+					opt.appendChild(document.createTextNode(node.getAttribute("name")));
+					obj.appendChild(opt);
+				}
+			}
+
+			function closeWin() {
+				$("#selectTeam").css("display","none");
+				$("#selectStar").css("display","none");
+			}
+			function openWin() {
+				$("#selectTeam").css("display","block");
+			}
+			function openWin2() {
+				$("#selectStar").css("display","block");
+			}
+				
+			function getTeam(){
+				var str = "<div id='team' align='center' onClick='openWin()'>+</div>";
+				$("#like_team").empty();
+				$("#like_team").append(str);
+				$("#eastteam p input").each(function(){
+					if($(this).prop("checked")) {
+						$("#like_team").append($(this).val() + " , ")
+					}
+				});
+				$("#westteam p input").each(function(){
+					if($(this).prop("checked")) {
+						$("#like_team").append($(this).val() + " , ")
+					}
+				});
+				$("#selectTeam").css("display","none");
+			}
+				
+			function getStar(){
+				var str = "<div id='star' align='center' onClick='openWin2()'>+</div>";
+				$("#like_star").empty();
+				$("#like_star").append(str);
+				$("#selectStar ul li p input").each(function(){
+					if($(this).prop("checked")) {
+						$("#like_star").append($(this).val() + " , ")
+					}
+				});
+				$("#selectStar").css("display","none");
+			}
+			</script>
+
 </body>
 </html>

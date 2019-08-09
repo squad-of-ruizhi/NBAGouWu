@@ -24,6 +24,7 @@
 	font-size: 16px;
 	font-weight: 400;
 	color: black;
+	cursor:pointer;
 }
 .bc_i ul li:first-child{
 	margin-left: 1100px;
@@ -41,7 +42,6 @@
 	margin-left: 50px;
 	font-size: 16px;
 	color: white;
-	cursor: pointer;
 }
 #bct_2{
 	width: 180px;
@@ -51,7 +51,6 @@
 	background-color: #949DA9;
 	font-size: 16px;
 	color: white;
-	cursor: pointer;
 }
 #bct_3{
 	width: 180px;
@@ -61,7 +60,6 @@
 	background-color: #949DA9;
 	font-size: 16px;
 	color: white;
-	cursor: pointer;
 }
 #bct_4{
 	width: 180px;
@@ -71,7 +69,6 @@
 	background-color: #949DA9;
 	font-size: 16px;
 	color: white;
-	cursor: pointer;
 }
 #bct_5{
 	width: 180px;
@@ -81,11 +78,18 @@
 	background-color: #949DA9;
 	font-size: 16px;
 	color: white;
-	cursor: pointer;
 }
-#cartbox{
+#bigbox{
 	width: 100%;
 	height: auto;
+	float: left;
+}
+#bigbox{
+	width: 100%;
+	height: auto;
+	float: left;
+}
+.cartbox{
 	float: left;
 }
 .cb_1{
@@ -138,6 +142,13 @@
 	height: 150px;
 	float: left;
 }
+.cb_5 ul li{
+	float: left;
+	margin-left: 2px;
+}
+.cb_5 ul li:first-child{
+	margin-left: 43px;
+}
 .cb5_sub{
 	background-color: #B4B4B4;
 	border: none;
@@ -146,6 +157,7 @@
 	width: 36px;
 	height: 36px;
 	margin-top: 45px;
+	cursor: pointer;
 }
 .cb5_add{
 	background-color: #00539C;
@@ -155,12 +167,15 @@
 	width: 36px;
 	height: 36px;
 	margin-top: 45px;
+	cursor: pointer;
 }
 .cb5_text{
 	width: 34px;
 	height: 34px;
-	margin-top: 40px;
-	border: solid #ccc 1px;
+	margin-top: 45px;
+	border: solid #ccc 2px;
+	text-align: center;
+	box-sizing: content-box;
 }
 .cb_6{
 	width: 180px;
@@ -180,6 +195,7 @@
 .cb_7 a{
 	color: black;
 	font-weight: 100;
+	cursor:pointer;
 }
 .cb_8{
 	width: 990px;
@@ -296,4 +312,52 @@
 	color: #0073D1;
 	border-radius: 3px;
 	cursor: pointer;
+}
+#popup{
+	width: 400px;
+	height: 165px;
+	position: fixed;
+	top: 260px;
+	left: 390px;
+	text-align: center;
+	background-color: white;
+	border: #D1D1D1 solid 1px;
+	border-radius: 3px;
+	display: none;
+}
+#pop_first{
+	margin-top: 15px;
+	width: 350px;
+	font-size: 16px;
+	font-weight: 500;
+}
+#pop_second{
+	margin-top: 50px;
+	width: 350px;
+}
+#pop_second input{
+	width: 150px;
+	height: 40px;
+	border: solid 2px #00559A;
+	border-radius: 3px;
+}
+#pops_1{
+	background-color: #00559A;
+	color: white;
+	cursor: pointer;
+}
+#pops_2{
+	background-color: white;
+	color: #00559A;
+	cursor: pointer;
+}
+#pops_1:hover{
+	background-color: #0073D1;
+	border: #0073D1;
+	color: white;
+}
+#pops_2:hover{
+	background-color: white;
+	border-color: #0073D1;
+	color: #0073D1;
 }

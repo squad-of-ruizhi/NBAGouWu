@@ -1,21 +1,14 @@
-<!doctype html>
-<html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<link rel="stylesheet" href="css/index.css" />
-<link rel="stylesheet" href="css/shoppingCart.css" />
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-<script type="text/javascript">
-
-</script>
-	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="short icon" href="images/NBAlogo.jpg"  />
+<link rel="stylesheet" href="css/show.css" />
+<title>NBA  Store</title>
 </head>
-
 <body>
-	<!-- 头部 -->
-	<header>
+    <header>
 		<div class="ul_01">
 			<ul>
 				<li><a href="#">登陆/注册</a></li>
@@ -23,7 +16,7 @@
 				<li><a href="#">我的账户</a></li>
 				<li><a href="#">|</a></li>
 				<li id="shoppingcar">
-					<a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;0</a>
+					<a href='#' onclick="carta()"><i class="fa fa-shopping-cart"></i>&nbsp;购物车</a>
 					<div class="header_menu" align="center" hidden="true">
                         <div id="hm_i">
 							<i class="fa fa-sort-asc fa-2x fa-inverse"></i>
@@ -82,7 +75,7 @@
 				<li><a href="#"><i class="fa fa-comments"></i>&nbsp;在线客服</a></li>
 			</ul>
 		</div>
-    	<img src="images/logo_cn.png" width="218" height="58" alt=""/>
+    	<img src="images/logo_cn.png" width="218" height="58"  style="margin-left:94px;" alt=""/>
 		<input type="text" id="search" placeholder="专区体恤现时2折8件" />
 		<a id="search_icon" href="#"><img src="images/search-icon.png" /></a>
 		<div class="newly-added-shop">
@@ -96,7 +89,7 @@
 	<!-- 导航 -->
     <nav>
         <ul id="padCheck">
-          	<li>
+          	<li id="padChecka">
 			  	<a href="#">选择球队</a>
 		  	</li>
           	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
@@ -104,7 +97,7 @@
 				<a href="#">品牌</a>
 			</li>
           	<li>
-				<a href="#">所有商品</a>
+				<a href="index.html">所有商品</a>
 			</li>
           	<li>
 				<a href="#">球衣</a>
@@ -119,7 +112,7 @@
 				<a href="#">女子</a>
 			</li>
           	<li>
-				<a href="#">儿童/青少年</a>
+				<a href="#">青年</a>
 			</li>
           	<li>
 				<a href="#">鞋类</a>
@@ -132,20 +125,84 @@
 			</li>
       </ul>
     </nav>
-	<div id="area_img"><img src="images/img_area.png" width="100%" height="30px" alt=""/></div>
+    <div id="area_img"><img src="images/img_area.png" width="100%" height="30px" alt=""/></div>
+   <div id="left">
+     <div class="breadcrumb" id="breadcrumb">
+    <!-- <ul class="list-inline" id="list-inline">
+		<li><a href="#" title="篮球">商品详情&nbsp&nbsp&nbsp/</a>篮球</li>
+	</ul>  -->
+</div>
+        <div class="pdp-cloudZoom-imgBox"  id="pdp-cloudZoom-imgBox">
+      <!-- 	<img class="events-pdp-cloudzoom" src="images/LQ_1.jpg"  width="448" height="448" style="user-select: none;padding-top:35px;"></img> -->
+          </div>
+    
+       <div class="Sp_right">
+              <p class="pdp-id">商品编码：<span id="pdp-ids">  </span></p>
+              <div id="itemName_pca">
+              <h1 id="itemName_pc">
+				<!-- NBA斯伯丁 TF-1000 LEGACY·传奇 篮球 室内篮球 -->
+            </h1>
+            <p class="pdp-price" id="pdpPrice_pc"><!-- ¥439.00 --></p></br><hr /></div>
+            <div class="right_bottom">
+              <div id="are">
+               <!--  <p>颜色:<span>&nbsp红色&nbsp</span></p>
+                 <p>尺寸:<span>&nbsp均码&nbsp</span></p> --></div>
+                 
+                 <p style="padding-top:27px;">数量:</p>
+                 <div class="events-calculate-num">
+		                  <a class="qtyBtnL-off"></a>
+		                <input class="events-input" type="text" value="1" id="buyCount"></input>
+		                <a class="events-plus-qtyBtnR"></a>  
+		            </div>
+		            
+		            <div class="pdp-addBtn-box">
+               		 <button class="btn-isBuyNow " id="btn-isBuyNow" >立即购买</button>
+               		 <button class="btn" id="addToShoppingCart">加入购物车</button>
+                	
+						
+					</div><br /><br /><br /><br />
+					<hr />
+            </div>
+       </div>
+     <div class="favorite">
+       <div class="section-title">
+            		<h3>你可能会喜欢</h3><br/><br/>
+            		<hr/>
+            	</div>
+            <div class="favorite_footer">
+            		<div class="kkk" >
+            			<ul style="width:100%;height:398px;"  id="favoriteL" >
+						<!--  <li style="margin-top:18px; height:340px;width:247px;float:left;">
+								<a class="thumbnail" href=" " product_id="NSBC19740000030">
+									<img src="images/LQ_1.jpg" style="margin-top:27px;width:220px;width:224px;"></img>
+								</a>
+		 						<h2>NBA 斯伯丁 2017 NBA篮球入门系列 7号 PU 室内外篮球 74-442Y</h2>
+		 						<p>
+												<span>¥249.00</span>
 
-	<div id="bodycon" align="center">
-		<div id="bodycon_1" align="center">
-			<h4>您的购物车是空的</h4>
-			<p>
-				您还未添加商品<br />
-				点击<a href="#">此处</a>继续购物
-			</p>
-			<input type="button" value="返回" />
-		</div>
-	</div>
-	<!-- 脚部 -->
-	<div id="foot">
+								</p>
+							</li> 
+							
+							
+							<li style="margin-top:18px; height:340px;width:247px;float:left;">
+								<a class="thumbnail" href=" " product_id="NSBC19740000030">
+									<img src="images/PeiJ_1.jpg" style="margin-top:27px;width:220px;width:224px;"></img>
+								</a>
+		 						<h2>NBA 斯伯丁 2017 NBA篮球入门系列 7号 PU 室内外篮球 74-442Y</h2>
+		 						<p>
+												<span>¥249.00</span>
+
+								</p>
+							</li>  -->
+			</ul>
+     </div>
+
+</div>
+    </div>
+    
+    
+    
+    <div id="foot">
         <div id="foot_div1"><img src="images/logo_cn.png" width="218" height="58" alt=""/></div>
 		<div id="foot_div2">
 			<ul>
@@ -200,5 +257,10 @@
 		  </p>
 		</div>
 </div>
+
+
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script src="js/show.js"></script>
+
 </body>
 </html>

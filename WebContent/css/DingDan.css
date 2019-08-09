@@ -215,9 +215,18 @@ nav #padCheck a:hover{
 	width:400px;
 	height:270px;
 	background-color:#e4e4e4;
-	margin-left:10px;
+	margin-left:40px;
 	margin-top:25px;
+	margin-right0px;
+	display:inline-block;
 }
+
+
+.setDefault{
+	width: 50px;
+	height: 100px;
+}
+
 
 .myaccount_content_{
 	  display:block;
@@ -298,7 +307,7 @@ nav #padCheck a:hover{
 	font-size:16px;
 	color:#00559a;
 	margin-left:150px;
-	display:none;
+
 }
 .edit-addressH{
 	margin-left:30px;
@@ -324,6 +333,12 @@ nav #padCheck a:hover{
 		height:36px;
 		width:150px;
 		margin-left:18px;
+		cursor:pointer;
+}
+
+.Set-default{
+	width: 100px;
+	height: 50px;
 }
 
 
@@ -337,4 +352,290 @@ nav #padCheck a:hover{
 .Set-default span:hover{
 	 cursor: pointer;
 	 color:red;
+}
+
+
+.addDZa{
+	   width:690px;
+	   height:520px;
+	   border:2px solid black;
+	   border-radius:9px 9px 9px 9px;
+	   margin-top:5px;
+      position:absolute;
+	  left:38%;
+	  top:38%;	
+	 background-color:white;
+	 display:none;
+}
+
+.addDZa  p{
+	  width:600px;
+	  height:60px;
+	  font-size:21px;
+	  float:left;
+     margin-left:25px;	
+     margin-top:15px;
+}
+
+
+.form{
+	margin-top:80px;
+	
+	width:690px;
+	height:500px;
+	
+	
+}
+
+.form p{
+	  width:280px;
+	  height:70px;
+	
+}
+
+.form input{
+	 width:400px;
+	 height:45px;
+	 border:1px solid black;
+	 margin-left:-130px;
+	 margin-top:5px;
+	 border-radius:9px 9px 9px 9px;
+	
+}
+
+
+.btn1 p:hover{
+	 cursor: pointer;
+	
+}
+
+
+.btn1{
+	  width:150px;
+	  height:40px;
+	  margin-top:80px;
+	  background-color:#00559a;
+	  float:left;
+	  margin-left:-25px;
+	  border-radius:8px 8px 8px 8px;
+	
+}
+
+.btn p:hover{
+	cursor: pointer;
+	
+}
+
+.form select{
+  margin-top:30px;
+  margin-left:-95px;
+  /* width:120px;
+  height:30px; */
+  width:170px;
+  height:25px;
+}
+
+
+.addDZab{
+	   width:690px;
+	   height:520px;
+	   border:2px solid black;
+	   border-radius:9px 9px 9px 9px;
+	   margin-top:5px;
+      position:absolute;
+	  left:45%;
+	  top:38%;	
+	 background-color:white;
+	 display:none;
+}
+
+.addDZab  p{
+	  width:600px;
+	  height:60px;
+	  font-size:21px;
+	  float:left;
+     margin-left:25px;	
+     margin-top:15px;
+}
+
+.forma{
+	margin-top:80px;
+	
+	width:690px;
+	height:500px;
+	
+	
+}
+
+.forma p{
+	  width:280px;
+	  height:70px;
+	
+}
+
+.forma input{
+	 width:400px;
+	 height:45px;
+	 border:1px solid black;
+	 margin-left:-130px;
+	 margin-top:5px;
+	 border-radius:9px 9px 9px 9px;
+	
+}
+
+
+.btn1a p:hover{
+	 cursor: pointer;
+	
+}
+
+
+.btn1a{
+	  width:150px;
+	  height:40px;
+	  margin-top:80px;
+	  background-color:#00559a;
+	  float:left;
+	  margin-left:-25px;
+	  border-radius:8px 8px 8px 8px;
+	
+}
+
+.btn p:hover{
+	cursor: pointer;
+	
+}
+
+.forma select{
+  margin-top:30px;
+  margin-left:-95px;
+  /* width:120px;
+  height:30px; */
+  width:170px;
+  height:25px;
+}
+
+
+#alterpwd{
+	margin-left:500px;
+	
+}
+
+#alterpwd input{
+		margin-top: 10px;
+	}
+	#userinfo{
+		width: auto;
+		height: auto;
+		margin-left:-130px;
+	}
+	#userinfo table{
+		width: 500px;
+		height: 400px;
+	}
+	#mail, #birthday, #sex, #origpwd, #newpwd, #newpwd2{
+		width: 220px;
+		height: 35px;
+		border: 1px #ccc solid;
+		border-radius: 3px;
+		padding-left: -30px;
+	}
+	#duration{
+		width: 35px;
+		height: 35px;
+		border: 1px #ccc solid;
+		border-radius: 3px;
+		padding-left: 10px;
+	}
+	#team, #star{
+		width: 15px;
+		height: 15px;
+		color: #276DAB;
+		border: 1px solid #276DAB;
+		line-height: 12px;
+		cursor: pointer;
+	}
+	
+	#affirmbtn{
+	   margin-left:500px;
+	}
+	
+	#affirmbtn input{
+		width: 160px;
+		height: 38px;
+		border: 1px solid #00559A;
+		border-radius: 3px;
+	}
+	#affbtn_1{
+		background-color: #00559A;
+		color: white;
+		font-size: 12px;
+	}
+	#affbtn_2{
+		background-color: white;
+		color: #00559A;
+		font-size: 12px;
+	}
+	#affbtn_1:hover{
+		background-color: #0073D1;
+		color: white;
+		font-size: 12px;
+		border: 1px solid #0073D1;
+	}
+	#affbtn_2:hover{
+		background-color: white;
+		color: #0073D1;
+		font-size: 12px;
+		border: 1px solid #0073D1;
+	}
+	#selectTeam, #selectStar{
+		width: 560px;
+		height: 480px;
+		position: absolute;
+		margin-top: -500px;
+		margin-left: 700px;
+		border: solid #ccc 1px;
+		background-color: white;
+		border-radius: 5px;
+		display: none;
+	}
+	#st_1, #ss_1{
+		padding-top: 10px;
+		width: 560px;
+		height: 80px;
+	}
+	#selectTeam ul li{
+		float: left;
+		display: block;
+		width: 240px;
+	}
+	#selectStar ul li {
+		display: block;
+		width: 500px;
+	}
+	#selectTeam ul li p, #selectStar ul li p{
+		margin-left: 60px;
+	}
+	#st_confrm, #ss_confrm{
+		width: 160px;
+		height: 38px;
+		border: 1px solid #00559A;
+		border-radius: 3px;
+		background-color: #00559A;
+		color: white;
+		font-size: 12px;
+	}
+	#st_confrm:hover, #ss_confrm:hover{
+		width: 160px;
+		height: 38px;
+		border: 1px solid #0073D1;
+		border-radius: 3px;
+		background-color: #0073D1;
+		color: white;
+		font-size: 12px;}
+		
+#right_GRXX{
+	display:none;
+	margin-top:-920px;
+	margin-left:-100px;
 }

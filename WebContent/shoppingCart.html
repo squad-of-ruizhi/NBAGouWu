@@ -2,100 +2,58 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>NBA Store</title>
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/shoppingCart.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#shoppingcar").mouseover(function() {
-		$(".header_menu").show();
-	});
-	$("#shoppingcar").mouseout(function() {
-		$(".header_menu").hide();
-	});
-	$("#header_menu").mouseover(function() {
-		$(".header_menu").show();
-	});
-})
-	
-function change(id){
-	$(this).attr("src","images/open.png");
-	console.info(id);
-	if($("#"+id+" a img").attr("src") == "images/open.png"){
-		$("#"+id+" a img").attr("src", "images/close.png");
-	} else{
-		$("#"+id+" a img").attr("src", "images/open.png");
-	}
-}
-</script>
+<script type="text/javascript" src="js/shoppingcart.js"></script>
+<script type="text/javascript" src="js/shoppingcart_top.js"></script>
+<link rel="short icon" href="images/NBAlogo.jpg"  />
 	
 </head>
 
 <body>
+	<div id="popup">
+		<div style="height: 30px; width: 100%; color: red;">
+			<i class="fa fa-window-close fa-2x" onclick="closeWindow()" aria-hidden="true" style="float: right;margin-top: -2px; cursor: pointer;"></i>
+		</div>
+		<div id="pop_first">您确定要删除该商品吗?</div>
+		<div id="pop_second">
+			<input type="button" id="pops_1" value="确定" onclick="confirm()" />
+			<input type="button" id="pops_2" value="取消" onclick="closeWindow()" />
+		</div>
+	</div>
+	
 	<!-- 头部 -->
 	<header>
 		<div class="ul_01">
 			<ul>
-				<li><a href="#">登陆/注册</a></li>
+				 <li><a href="#">登陆/注册</a></li>
 				<li><a href="#">|</a></li>
 				<li><a href="#">我的账户</a></li>
-				<li><a href="#">|</a></li>
+				<li><a href="#"></a></li>
 				<li id="shoppingcar">
-					<a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;0</a>
-					<div class="header_menu" align="center" hidden="true">
-                        <div id="hm_i">
+					<!-- <a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;0</a> -->
+					<div id="header_menu" align="center" hidden="true">
+                        <!-- <div id="hm_i">
 							<i class="fa fa-sort-asc fa-2x fa-inverse"></i>
-						</div>
-						<div class="hm_list">
+						</div> -->
+						<!-- <div id="hm_list">
                             <div id="hml_title">
 								<b id="hml_1">我的购物车</b>
-                              	<b class="hml_2">1件商品</b>
+                              	<b id="hml_2">0件商品</b>
 							</div>
 							<div id="hml_coms">
-							  	<div class="hml_com">
-									<div class="hmlc">
-								  		<img src="images/com_1.jpg" width="60px" height="60px" alt=""/>
-										<div class="hmlc_com" align="left">
-											<p class="hmlcc_1">
-												NBA 斯伯丁 Spalding 德鲁大叔<br/>
-												PU 室内外7号篮球
-											</p>
-											<p class="hmlcc_2">
-												数量:<b class="com_num">1</b> &nbsp; &nbsp; &nbsp; &nbsp; 
-												图片:<b class="com_color">图片色</b><br/>
-												尺寸:<b class="com_size">F</b>
-											</p>
-											<p class="hmlcc_3">￥399</p>
-										</div>
-									</div>
-								</div>
-								<div class="hml_com">
-									<div class="hmlc">
-								  		<img src="images/com_1.jpg" width="60px" height="60px" alt=""/>
-										<div class="hmlc_com" align="left">
-											<p class="hmlcc_1">
-												NBA 斯伯丁 Spalding 德鲁大叔<br/>
-												PU 室内外7号篮球
-											</p>
-											<p class="hmlcc_2">
-												数量:<b class="com_num">1</b> &nbsp; &nbsp; &nbsp; &nbsp; 
-												图片:<b class="com_color">图片色</b><br/>
-												尺寸:<b class="com_size">F</b>
-											</p>
-											<p class="hmlcc_3">￥399</p>
-										</div>
-									</div>
-								</div>
+							  	
 							</div>
 							<div id="hml_total">
 								<p align="left">总计
-									<b id="totalprice">￥798.00</b>
+									<b id="totalprice">￥0</b>
 								</p>
-								<input type="button" value="查看购物车" />
+								<input type="button" value="查看购物车" onclick="gotoShopcart()" />
 							</div>
-					  </div>
+					  </div> -->
 					</div>
 				</li>
 				<li><a href="#">|</a></li>
@@ -119,12 +77,12 @@ function change(id){
           	<li>
 			  	<a href="#">选择球队</a>
 		  	</li>
-          	<li><a href="#"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
+          	<li><a href="index.html"><img src="images/nike-logo.jpg" width="55px" height="23px"/></a></li>
           	<li>
 				<a href="#">品牌</a>
 			</li>
           	<li>
-				<a href="#">所有商品</a>
+				<a href="index.html">所有商品</a>
 			</li>
           	<li>
 				<a href="#">球衣</a>
@@ -154,13 +112,13 @@ function change(id){
     </nav>
 	<div id="area_img"><img src="images/img_area.png" width="100%" height="30px" alt=""/></div>
 
-	<div id="body_content">
+	<div id="body_content"  style="display:none">
 		<p>购物车</p>
 		<div>
 			<div class="bc_i">
 				<ul>
-					<li><input type="radio" /><a href="#">全选</a></li>
-					<li><a href="#">删除</a></li>
+					<li><input type="checkbox" onclick="choAll(checked)" class="checkall" id="checkall1" /><a>全选</a></li>
+					<li><a onclick="delAll()">删除所有</a></li>
 				</ul>
 			</div>
 		</div>
@@ -171,48 +129,38 @@ function change(id){
 			<div id="bct_4" align="center">总计</div>
 			<div id="bct_5" align="center">删除</div>
 		</div>
-		<div id="cartbox">
-			<div class="cb_1" align="center">
-				<input type="checkbox" />
-			</div>
-			<div class="cb_2">
-				<img src="images/com_1.jpg" width="100px" height="100px" />
-			</div>
-			<div class="cb_3">
-				<div class="cb3_1">NBA 斯伯丁 Spalding 德鲁大叔 PU 室内外7号篮球</div>
-				<div class="cb3_2">商品：NSBC19740000056</div>
-				<div class="cb3_3">尺寸：F</div>
-				<div class="cb3_4">颜色：图片色</div>
-			</div>
-			<div class="cb_4" align="center">￥399</div>
-			<div class="cb_5" align="center">
-				<input type="button" value="-" class="cb5_sub" />
-				<input type="text" value="1" class="cb5_text" />
-				<input type="button" value="+" class="cb5_add" />
-			</div>
-			<div class="cb_6" align="center">￥399</div>
-			<div class="cb_7" align="center">
-				<a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-			</div>
-			<div class="cb_8"></div>
+		<div id="bigbox">
+			
 		</div>
+		
+		
 		<div class="bc_i">
 			<ul>
-				<li><input type="radio" /><a href="#">全选</a></li>
-				<li><a href="#">删除</a></li>
+				<li><input type="checkbox" onclick="choAll(checked)" class="checkall" id="checkall2" /><a>全选</a></li>
+				<li><a onclick="delAll()">删除所有</a></li>
 			</ul>
 		</div>
 		<div id="bc_accounts">
 			<div id="bca">
 				<div id="bca_left" align="center">订单总计</div>
-				<div id="bca_right" align="center">￥0.00</div>
+				<div id="bca_right" align="center">￥0</div>
 				<div id="bca_btn_left" align="center">
-					<input type="button" value="结算" />
+					<input type="button" value="结算" style="cursor:pointer" onclick="settleAcc()" />
 				</div>
 				<div id="bca_btn_right" align="center">
-					<input type="button" value="继续购物" />
+					<input type="button" value="继续购物" onclick="goshopping()" style="cursor:pointer" />
 				</div>
 			</div>
+		</div>
+	</div>
+	<div id="bodycon" align="center" style="display:none">
+		<div id="bodycon_1" align="center">
+			<h4>您的购物车是空的</h4>
+			<p>
+				您还未添加商品<br />
+				点击<a href="index.html">此处</a>继续购物
+			</p>
+			<input type="button" value="返回" />
 		</div>
 	</div>
 	<!-- 脚部 -->

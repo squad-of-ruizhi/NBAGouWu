@@ -21,4 +21,23 @@ public class SpingDaoImpl implements ISpingDao {
 	     return  db.finds(Sping.class,sql,spcate);
 		 
 	 }
+
+
+
+	@Override
+	public Sping findSingle(String spId) {
+		DBHelper db=new DBHelper();
+		 String sql="select spId,spname,spprice,sppic,spsize,spcolor,spcate from  sp where spId= ? ";
+	     return  db.find(Sping.class,sql,spId);
+	     
+	}
+
+
+	@Override
+	public List<Sping> findcateL(String spcateL,String spIdL) {
+		 DBHelper db=new DBHelper();
+		 String sql="select  spId,spname,spprice,sppic,spsize,spcolor from  sp where   spcate= ? and  spid != ?  ";
+	     return  db.finds(Sping.class,sql,spcateL,spIdL);
+	}
+
 }

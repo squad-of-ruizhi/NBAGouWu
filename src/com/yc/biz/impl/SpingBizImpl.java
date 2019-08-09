@@ -1,6 +1,7 @@
 package com.yc.biz.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yc.dao.impl.SpingDaoImpl;
 import com.yc.gw.Dao.ISpingDao;
@@ -20,5 +21,20 @@ public class SpingBizImpl implements ISpingBiz {
 		 ISpingDao dao=new SpingDaoImpl();
 		 return dao.findcate(spcate);
 	 }
+
+
+	@Override
+	public Sping findSingle(String spId) {
+		 ISpingDao dao=new SpingDaoImpl();
+		 return dao.findSingle(spId);
+	 }
+
+	@Override
+	public List<Sping> findcateL(String spcateL,String spIdL) {
+		ISpingDao dao=new SpingDaoImpl();
+		 return dao.findcateL(spcateL,spIdL);
+	}
+	
+
 
 }
