@@ -25,9 +25,4 @@ public interface ICartBiz {
 
 	public int addoneSp(String spId, String usid, String tolprice, String samount);
 
-	public List<CartInfo> selhistory(String usid);
-
-	public int deletehis(String tempaId);
-
-
 }

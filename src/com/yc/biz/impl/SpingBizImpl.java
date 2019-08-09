@@ -33,30 +33,6 @@ public class SpingBizImpl implements ISpingBiz {
 		ISpingDao dao=new SpingDaoImpl();
 		 return dao.findcateL(spcateL,spIdL);
 	}
-
-	@Override
-	public List<Sping> pricepx() {
-		ISpingDao dao=new SpingDaoImpl();
-		return dao.pricepx();
-	}
-
-	@Override
-	public List<Sping> newpx() {
-		ISpingDao dao=new SpingDaoImpl();
-		return dao.newpx();
-	}
-
-	@Override
-	public List<Sping> findByPage(int pageNo, int pageSize) {
-		ISpingDao dao=new SpingDaoImpl();
-		return dao.findByPage(pageNo,pageSize);
-	}
-
-	@Override
-	public int getTotal() {
-		ISpingDao dao=new SpingDaoImpl();
-		return dao.getTotal(); 
-	}
 	
 
 }

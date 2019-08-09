@@ -38,36 +38,4 @@ public class SpingDaoImpl implements ISpingDao {
 		 String sql="select  spId,spname,spprice,sppic,spsize,spcolor from  sp where   spcate= ? and  spid != ?  ";
 	     return  db.finds(Sping.class,sql,spcateL,spIdL);
 	}
-
-
-	@Override
-	public List<Sping> pricepx() {
-		DBHelper db=new DBHelper();
-		String sql="select spid,spname,spprice,sppic,spsize,spcolor,spcate from  sp order by spprice";
-		return db.finds(Sping.class, sql);
-	}
-
-
-	@Override
-	public List<Sping> newpx() {
-		DBHelper db=new DBHelper();
-		String sql="select spid,spname,spprice,sppic,spsize,spcolor,spcate from  sp order by  spId desc";
-		return db.finds(Sping.class, sql);
-	}
-
-
-	@Override
-	public List<Sping> findByPage(int pageNo, int pageSize) {
-		DBHelper db=new DBHelper();
-		String sql="select *from sp limit ?,?";
-		return db.finds(Sping.class, sql,(pageNo-1)*pageSize,pageSize);
-	}
-
-
-	@Override
-	public int getTotal() {
-		DBHelper db=new DBHelper();
-		String sql="select count(spId) from sp";
-		return  db.getTotal(sql); 
-	}
 }

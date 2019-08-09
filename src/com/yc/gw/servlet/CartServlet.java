@@ -56,29 +56,8 @@ public class CartServlet extends BasicServlet {
 			 updateo(request,response);
 		 }else if("addoneSp".equals(op)){
 			 addoneSp(request,response);
-		 }else if("history".equals(op)){
-			 selhistory(request,response);
-		 }else if("deletehis".equals(op)){
-			 deletehis(request,response);
 		 }
 
-	}
-
-
-	private void deletehis(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String tempaId=request.getParameter("tempaId");
-		ICartBiz  cartBiz=new CartBizImpl();
-		int result=cartBiz.deletehis(tempaId);
-		this.send(response, result);
-		
-	}
-
-	private void selhistory(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String usid=request.getParameter("usid");
-		ICartBiz  cartBiz=new CartBizImpl();
-		List<CartInfo>  list=cartBiz.selhistory(usid);
-		this.send(response, list);
-		
 	}
 
 	private void addoneSp(HttpServletRequest request, HttpServletResponse response) throws IOException {

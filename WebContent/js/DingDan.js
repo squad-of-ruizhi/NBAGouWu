@@ -3,8 +3,6 @@
  */
 var usid= sessionStorage.getItem("usid");
 console.log(usid);
-var tel = sessionStorage.getItem("tel");
-$("#aaa").html(tel);
 
 $(function(){
 	console.log(usid);
@@ -24,25 +22,9 @@ $(function(){
 	
      /*test(data.usid);*/
          
-	grxx();
+	
 	
 })
-
-
-function grxx() {
-	$.post("DingDan",{op:"findAll", usid:sessionStorage.getItem("usid")}, function(data,status) {
-		$.each(JSON.parse(data), function(index,item) {
-			$("#mail").val(item.mail);
-			$("#birthday1").val(item.birthday);
-			$("#sex").val(item.sex);
-			$("#howlong").val(item.duration);
-			$("#team2").empty();
-			$("#team2").append(item.team);
-			$("#star2").empty();
-			$("#star2").append(item.team);
-		});
-	});
-}
 
 
 function WDD(){     //我的订单
@@ -51,7 +33,6 @@ function WDD(){     //我的订单
 	    	  $("#right").css("display","block");
 	    	  $("#right_DZ").css("display","none");
 	    	  $("#right_GRXX").css("display","none");
-	    	  $(".personhis").css("display","none");
 	    	  
 	    	  console.log(usid);
 	    	  $.post("DingDan",{op:"selectId",usid:usid},function(data){
@@ -65,14 +46,8 @@ function WDD(){     //我的订单
 						  	str+='<td>'+item.state+'</td>'
 						  	str+='<td>'
 						  	str+='<a href="#'+item.usid+'" class="font-bluea" onclick="deleteb('+item.orderid+')">删除<span class="font-blue"></span></a>'
-						 console.log(item.Dstatus);
-						  	if( item.Dstatus == 1){
-						  	str+='<a class="btn-red" ok_socode="NBACN200685" ok_paymenttype="4" >'
-			                str+='订单配送中....</a>'
-			               }else {
-			            	   str+='<a class="btn-red" ok_socode="NBACN200685" ok_paymenttype="4" onclick="DDstatus('+item.orderid+')" id="btn-red'+item.orderid+'">'
-				                str+='立即支付</a>'
-			               }
+						    str+='<a class="btn-red" ok_socode="NBACN200685" ok_paymenttype="4">'
+			                str+='立即支付</a>'
 						  	str+='</td>'
 						  	str+='</tr>'
 						  				
@@ -102,14 +77,13 @@ function WDZ(){   //地址簿
 			  $("#right").css("display","none");
 			  $("#right_DZ").css("display","block");
 			  $("#right_GRXX").css("display","none");
-			  $(".personhis").css("display","none");
 			  
 			  console.log(usid);
 			  $.post("Addres",{op:"findAllDz",usid:usid},function(data){
 				   var str="";
 				     $.each(data,function(index,item){
 				    	 str+='<div class="default-address" id="default-address">'
-				    	str+='<p class="edit-name">'+item.aname;
+				    	str+='<p class="edit-name"> '  +item.aname;
 				    	 if(item.adefault == 1){
 				    		 str+='<span style="visibility:visible" class="2'+item.addrid+'">默认地址</span></p>';
 				    	 }else{
@@ -296,59 +270,5 @@ function personedit(){
 	 $("#myaccount_content_").css("display","none");
 	  $("#right").css("display","none");
 	  $("#right_DZ").css("display","none");
-	  $(".personhis").css("display","none");
-}
-
-
-
-function personhisa(){
-	$("#right_GRXX").css("display","none");
-	 $("#myaccount_content_").css("display","none");
-	  $("#right").css("display","none");
-	  $("#right_DZ").css("display","none");
-	  $(".personhis").css("display","block");
-	
-	  $.post("cart",{op:"history",usid:usid},function(data){
-		  console.log(data);
-		  var str=" "
-			  $.each(data,function(index,item){
-				  str+='<div class="liebiao" id="liebiao">';
-			    	 str+='<a href="show.html#'+item.spId+'"><img src="'+item.sppic+'" width="150" height="150"  alt=""/></a>';
-					str+='<h2>'+item.spname+'<br />'+item.spcate+'&nbsp&nbsp&nbsp'+item.samount+'件</h2>';
-					str+='<p><span>¥'+item.tolprice+'</span></p> <a onclick="deletehis('+item.tempaId+')"> 删除</a>';
-				  str+='</div>';
-				  
-				  
-			  })
-			  $("#history").html(str);
-		           
-	  },"json")
 	  
 }
-
-
-function deletehis(a){
-	  var tempaId=a;
-	  $.post("cart",{op:"deletehis",tempaId:tempaId},function(data){
-		
-		  
-		  
-	  })
-	  
-	  $("#liebiao").remove();  
-	   
-	  
-}
-
-function DDstatus(g){
-	var orderid=g;
-	console.log(orderid);
-	$.post("DingDan",{op:"Ddstatus",orderid:orderid},function(data){
-		
-	})
-	
-	$("#btn-red"+orderid).html(" ");
-	$("#btn-red"+orderid).html("订单配送中....");
-	
-}
-

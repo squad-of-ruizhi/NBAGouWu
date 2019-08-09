@@ -213,7 +213,6 @@
 					
 					location.href='index.html';              /* #'+data.usid+' */
 					sessionStorage.setItem("usid", data.usid);
-					sessionStorage.setItem("tel", data.tel);
 				}else{
 					alert("账号或密码错误");
 				}
@@ -229,7 +228,8 @@
 			}else{
 				$.post("getMessageServlets", {op:"sendCode", phone:phone},function (code) {
 					if (code !== verify){
-						alert("手机验证码错误");
+						alert("手机验证码错误")
+					}else{
 						location.reload();
 					}
 				},"text");

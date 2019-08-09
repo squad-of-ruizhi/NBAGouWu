@@ -23,22 +23,6 @@ public interface ISpingBiz {
 
 
 
-	public List<Sping> pricepx();
-
-
-
-	public List<Sping> newpx();
-
-
-
-	public List<Sping> findByPage(int pageNo, int pageSize);
-
-
-
-	public int getTotal();
-
-
-
 
  
 }

@@ -62,16 +62,4 @@ public class CartBizImpl implements ICartBiz {
 		ICartDao dao=new CartDaoImpl();
 		return dao.addoneSp(spId,usid,tolprice,samount);
 	}
-	@Override
-	public List<CartInfo> selhistory(String usid) {
-		ICartDao dao=new CartDaoImpl();
-		return dao.selhistory(usid);
-	}
-	@Override
-	public int deletehis(String tempaId) {
-		ICartDao dao=new CartDaoImpl();
-		return dao.deletehis(tempaId);
-	}
-	
-	}
-
+}

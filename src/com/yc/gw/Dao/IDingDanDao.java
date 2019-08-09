@@ -10,7 +10,5 @@ public interface IDingDanDao {
 
 	int deleteord(String orderid);
 
-	int Ddstatus(String orderid);
-
 
 }

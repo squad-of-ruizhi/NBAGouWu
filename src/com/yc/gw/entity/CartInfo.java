@@ -19,21 +19,7 @@ public class CartInfo implements Serializable {
 	private String spcolor;
 	private String spsize;
 	private String tolprice;
-	private String spcate;
-	private String tempaId;
 	
-	public String getTempaId() {
-		return tempaId;
-	}
-	public void setTempaId(String tempaId) {
-		this.tempaId = tempaId;
-	}
-	public String getSpcate() {
-		return spcate;
-	}
-	public void setSpcate(String spcate) {
-		this.spcate = spcate;
-	}
 	public String getTolprice() {
 		return tolprice;
 	}
@@ -165,7 +151,7 @@ public class CartInfo implements Serializable {
 	public String toString() {
 		return "CartInfo [shopid=" + shopid + ", spId=" + spId + ", samount=" + samount + ", usid=" + usid + ", spname="
 				+ spname + ", spprice=" + spprice + ", sppic=" + sppic + ", spcolor=" + spcolor + ", spsize=" + spsize
-				+ ", tolprice=" + tolprice + ", spcate=" + spcate + ", tempaId=" + tempaId + "]";
+				+ ", tolprice=" + tolprice + "]";
 	}
 	public CartInfo(int shopid, int spId, int samount, int usid, String spname, double spprice, String sppic,
 			String spcolor, String spsize) {

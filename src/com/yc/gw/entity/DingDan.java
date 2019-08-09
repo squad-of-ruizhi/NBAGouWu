@@ -8,7 +8,6 @@ public class DingDan {
      private String addr;
      private  int spId;
      private int usid;
-     private String Dstatus;
      
      
     
@@ -20,12 +19,6 @@ public class DingDan {
 	}
 	public String getOdate() {
 		return odate;
-	}
-	public String getDstatus() {
-		return Dstatus;
-	}
-	public void setDstatus(String dstatus) {
-		Dstatus = dstatus;
 	}
 	public void setOdate(String odate) {
 		this.odate = odate;
@@ -63,10 +56,10 @@ public class DingDan {
 	
       
 	 @Override
-	public String toString() {
-		return "DingDan [orderid=" + orderid + ", odate=" + odate + ", oamount=" + oamount + ", state=" + state
-				+ ", addr=" + addr + ", spId=" + spId + ", usid=" + usid + ", Dstatus=" + Dstatus + "]";
-	}
+		public String toString() {
+			return "DingDan [orderid=" + orderid + ", odate=" + odate + ", oamount=" + oamount + ", state=" + state
+					+ ", addr=" + addr + ", spId=" + spId + ", usid=" + usid + "]";
+		}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

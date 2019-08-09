@@ -10,5 +10,4 @@ public interface IDingDanBiz {
 
 	int deleteord(String orderid);
 
-	public int Ddstatus(String orderid);
 }

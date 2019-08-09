@@ -19,20 +19,4 @@ public interface ISpingDao {
 
 
 	public List<Sping> findcateL(String spcateL,String spIdL);
-
-
-
-	public List<Sping> pricepx();
-
-
-
-	public List<Sping> newpx();
-
-
-
-	public List<Sping> findByPage(int pageNo, int pageSize);
-
-
-
-	public int getTotal();
 }
